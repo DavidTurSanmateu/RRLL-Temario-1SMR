@@ -4,6 +4,65 @@
  * @description Theme for the IES Conselleria presentation template
 */
 
+
+.md-typeset table thead th {
+  background-color: #00859155;
+}
+
+/* Ancho mínimo de imágenes */
+
+.md-typeset img {
+  min-width: 400px;
+}
+
+/* Terminal */
+
+.terminal pre,
+pre.terminal {
+    background-color: black;
+    color: white;
+}
+
+.terminal code {
+    color: White;
+}
+
+.terminal .hljs-comment {
+    color: Grey;
+}
+
+/* mongo en terminal, classe JSON */
+
+.terminal .language-json .hljs-quote,
+.terminal .language-json .hljs-type,
+.terminal .language-json .hljs-symbol,
+.terminal .language-json .hljs-bullet,
+.terminal .language-json .hljs-addition,
+.terminal .language-json .hljs-meta,
+.terminal .language-json .hljs-link,
+.terminal .language-json .hljs-literal,
+.terminal .language-json .hljs-title,
+.terminal .language-json .hljs-section,
+.terminal .language-json .hljs-selector-tag,
+.terminal .language-json .hljs-built_in,
+.terminal .language-json .hljs-builtin-name {
+    color: White;
+}
+
+.terminal .language-json .hljs-keyword {
+    color: LightSeaGreen;
+}
+
+.terminal .language-json .hljs-attribute,
+.terminal .language-json .hljs-attr,
+.terminal .language-json .hljs-number {
+    color: Chocolate;
+}
+
+.terminal .language-json .hljs-string {
+    color: LimeGreen;
+}
+
 /* Ocultar TOC / navegación secundaria */
 .md-sidebar--secondary {
   display: none !important;
@@ -14,11 +73,11 @@
   margin-right: 0 !important;
 }
 
-
 .two-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  align-items: center;
 }
 
 @media screen and (max-width: 768px) {
