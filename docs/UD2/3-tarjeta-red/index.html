@@ -1851,19 +1851,26 @@
 
 
 <h1 id="3-la-tarjeta-de-red">3. La tarjeta de red</h1>
-<p>El adaptador de red, tarjeta de red o <strong>NIC (Network Interface Card)</strong> es el elemento fundamental en la composición de la parte física de una red de área local. Cada adaptador de red es una interfaz entre el hardware y la red.</p>
-<p>El adaptador puede venir o no incorporado con la plataforma hardware básica del sistema. En algunos ordenadores personales hay que añadir una tarjeta separada, independiente del sistema, para realizar la función de adaptador de red.</p>
+<p>El adaptador de red, tarjeta de red o <strong>NIC (Network Interface Card)</strong> es el componente que permite a un equipo conectarse a una red. Actúa como interfaz entre el sistema y el medio de transmisión, ya sea mediante un cable de red o mediante una conexión inalámbrica.</p>
+<p>Actualmente, la mayoría de ordenadores y dispositivos incorporan la tarjeta de red en la propia placa base. También existen adaptadores de red independientes que pueden instalarse en el equipo o conectarse externamente, por ejemplo, mediante USB.</p>
 <h2 id="31-descripcion-y-conexion-del-adaptador">3.1. Descripción y conexión del adaptador</h2>
-<p>La conexión de la tarjeta de red al hardware del sistema sobre el que se soporta el host de comunicaciones se realiza a través de la interfaz de conexión. Cada ordenador transfiere internamente la información entre los distintos componentes en paralelo a través de un bus interno. Los distintos componentes, especialmente algunos periféricos y las tarjetas, se conectan a este bus a través de unos conectores llamados slots de conexión, que siguen unas especificaciones concretas.</p>
-<p>Actualmente las interfaces más usadas en servidores y equipos de sobremesa son PCI, PCMCIA para ordenadores portátiles y USB tanto para portátiles como para equipos de sobremesa.</p>
-<p><img alt="Tarjetas de red" src="../img/adaptadores.png" /></p>
-<p>En el caso de adaptadores para redes inalámbricas el procedimiento de instalación es semejante aunque no utilizaremos cables, que serán sustituidos por las antenas de radiación que las propias interfaces llevan incorporadas.</p>
-<p>Como en cualquier otra tarjeta, el adaptador de red necesita de un software controlador que conduzca sus operaciones desde el sistema operativo.</p>
-<p>Sobre este controlador pueden establecerse otros programas de más alto nivel y que tienen funciones específicas relacionadas con los protocolos de la red. A estos programas se les llama «packet-drivers», porque son los encargados de la confección de los paquetes o tramas que circularán por la red.</p>
+<p>En los equipos de sobremesa y servidores, las tarjetas de red adicionales se pueden conectar normalmente mediante una ranura <strong>PCI Express (PCIe)</strong> de la placa base. También existen adaptadores de red externos que se conectan mediante <strong>USB</strong>.</p>
+<p>Los adaptadores de red inalámbricos permiten conectarse a redes Wi-Fi sin utilizar un cable de red. Para ello incorporan una o varias antenas que permiten transmitir y recibir las señales de radio.</p>
+<div class="two-columns">
+<div>
+<p><img alt="Tarjetas de red" src="../img/tarjeta-red.png" /></p>
+</div>
+<div>
+<p><img alt="Tarjetas de red inalámbricas" src="../img/tarjeta-red-inalam.png" /></p>
+</div>
+</div>
+<p>Para funcionar correctamente, la tarjeta de red necesita un <strong>controlador (driver)</strong> que permita al sistema operativo comunicarse con el dispositivo. Los sistemas operativos actuales suelen incluir controladores para los adaptadores más habituales, aunque en algunos casos es necesario instalar uno específico.</p>
+<p>La tarjeta de red se encarga de las funciones relacionadas con la comunicación a nivel físico y de enlace, como la transmisión y recepción de datos y, en redes Ethernet, el uso de direcciones <strong>MAC</strong>.</p>
 <h2 id="32-configuracion-de-las-tarjetas-de-red">3.2. Configuración de las tarjetas de red</h2>
-<p>No todos los adaptadores de red sirven para todas las redes. Existen tarjetas apropiadas para cada tecnología de red: <strong>Ethernet, Token Ring, FDDI, redes inalámbricas</strong>, etc.</p>
-<p>Algunas tarjetas que sirven para el mismo tipo de red se parametrizan de acuerdo con ciertas especificaciones. Por ejemplo, una tarjeta Ethernet puede estar configurada para transmitir a 10 Mbps o 100 Mbps, si está preparada para ello, dependiendo del tipo de red Ethernet a la que se vaya a conectar.</p>
-<p>Los adaptadores de red se pueden configurar en modo gráfico mediante el <strong>Panel de Control (Windows)</strong> o el <strong>Administrador de red (Linux)</strong>, aunque también es común utilizar el <strong>intérprete de comandos (Windows)</strong> o <strong>Shell (Linux)</strong>. Por ejemplo, es común servirse de las órdenes <code>ifconfig</code> para configurar tarjetas de red cableadas y de <code>iwconfig</code> para las tarjetas de red inalámbricas, aunque esto puede variar dependiendo de la distribución concreta del sistema operativo y de su versión.</p>
+<p>Las tarjetas de red pueden utilizar diferentes tecnologías y medios de transmisión. Actualmente, la tecnología más habitual en redes locales es <strong>Ethernet</strong>, tanto mediante cable como mediante <strong>Wi-Fi</strong> para las conexiones inalámbricas.</p>
+<p>Una tarjeta Ethernet puede admitir diferentes velocidades de transmisión, como <strong>100 Mb/s, 1 Gb/s o 2,5 Gb/s</strong>, dependiendo del modelo y de la tecnología utilizada. La velocidad de funcionamiento se determina mediante la configuración de la interfaz y, normalmente, mediante la negociación automática con el dispositivo al que está conectada.</p>
+<p>Además de las características propias de la tarjeta, desde el sistema operativo se configura la conexión de red. Entre otros parámetros, se pueden establecer la <strong>dirección IP, la máscara de red, la puerta de enlace y los servidores DNS</strong>.</p>
+<p>Estas configuraciones pueden realizarse mediante las herramientas gráficas del sistema operativo o mediante la <strong>línea de comandos</strong>. En Linux moderno, por ejemplo, pueden utilizarse herramientas como <code>ip</code> y <code>nmcli</code>, mientras que en Windows se dispone de herramientas como <code>ipconfig</code> y <code>netsh</code>.</p>
 
 
 
@@ -1913,7 +1920,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["header.autohide", "navigation.instant", "content.code.annotate", "navigation.tracking", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "content.code.annotate", "navigation.tracking", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>

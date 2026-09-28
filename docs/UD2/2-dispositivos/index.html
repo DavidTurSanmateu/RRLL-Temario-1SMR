@@ -1873,51 +1873,57 @@
 
 
 <h1 id="2-dispositivos-de-conexion-de-cables">2. Dispositivos de conexión de cables</h1>
-<p>Los cables que forman parte de una red de transmisión de datos no pueden utilizarse si la señal eléctrica no entra en ellos debidamente. De esta función se ocupan los <strong>conectores</strong>, que no son más que interfaces que adecuan la señal del cable a la interfaz del receptor.</p>
+<p>Los cables que forman parte de una red de transmisión de datos no pueden utilizarse si la señal eléctrica no entra en ellos debidamente. Los <strong>conectores</strong> son elementos que permiten unir un cable con otro dispositivo, otro cable o un elemento de conexión, proporcionando una interfaz física adecuada para transmitir la señal.</p>
 <h2 id="21-conectores-para-redes">2.1. Conectores para redes</h2>
-<p>El conector es la interfaz entre el cable y el DTE o el DCE de un sistema de comunicación, o entre dos dispositivos intermedios en cualquier parte de la red.</p>
-<p>Algunos de estos conectores se describen a continuación:</p>
+<p>Entre los conectores, destacan los que se describen a continuación:</p>
 <ul>
-<li><strong>RJ11</strong>, <strong>RJ12</strong>, <strong>RJ45</strong>. Estos conectores se suelen utilizar con cables UTP, STP y otros cables de pares.</li>
-<li><strong>AUI</strong>, <strong>DB15</strong>. Utilizados en la formación de topologías en estrella con cables de pares, o para la conexión de transceptores a las estaciones.</li>
-<li><strong>BNC</strong>. Se utiliza con cable coaxial fino, típico de Ethernet. Mantiene la estructura coaxial del cable en cada conexión.</li>
-<li><strong>T coaxial</strong>. Es el modo natural de conectar una estación en un bus de cable coaxial.</li>
-<li><strong>DB25</strong> y <strong>DB9</strong>. Son conectores utilizados para transmisiones serie.</li>
+<li><strong>RJ11</strong> y <strong>RJ12</strong>: se utilizan principalmente en instalaciones telefónicas. En redes Ethernet de cobre se utiliza habitualmente el conector <strong>RJ45</strong>, sobre cables de pares trenzados.</li>
+<li><strong>LC</strong> y <strong>SC</strong>: son conectores utilizados en instalaciones de fibra óptica. El LC es muy habitual en equipos de red por su reducido tamaño, mientras que el SC también se utiliza en instalaciones de fibra óptica.</li>
+<li>BNC, T coaxial, DB9 y DB25: son conectores utilizados en tecnologías y sistemas de comunicación que tuvieron mayor presencia en el pasado. <em>Actualmente no son habituales en las redes Ethernet modernas</em>.</li>
 </ul>
-<p>Pero cables y conectores no son los únicos elementos físicos de la red. También hay que considerar la
-conducción de los cables por las instalaciones arquitectónicas, los elementos que adecuan los cables a
-las tarjetas de red, etc.</p>
+<p>Pero cables y conectores no son los únicos elementos físicos de la red. También hay que considerar la conducción de los cables por las instalaciones arquitectónicas, los elementos que adecuan los cables a las tarjetas de red, etc.</p>
 <ul>
-<li><strong>Balums</strong> y <strong>transceptores</strong>. Son capaces de adaptar la señal pasándola de coaxial, twinaxial, dual coaxial a UTP o, en general, a cables de pares, sean o no trenzados.</li>
-<li><strong>Rack</strong>. Es un armario que recoge de modo ordenado las conexiones de toda o una parte de la red.</li>
-<li><strong>Latiguillos</strong>. Son cables cortos utilizados para prolongar los cables entrantes o salientes del rack.</li>
+<li><strong>Transceptor</strong>. Es un dispositivo que integra las funciones de transmisión y recepción de señales. Por ejemplo, un módulo SFP convierte las señales eléctricas en señales ópticas para transmitirlas por la fibra y hace el proceso inverso al recibirlas.</li>
+<li><strong>Rack</strong>. Un rack es una estructura normalizada utilizada para instalar, organizar y proteger equipos de red, paneles de parcheo y otros elementos de una instalación.</li>
+<li><strong>Latiguillos</strong>. Son cables cortos utilizados para realizar conexiones entre distintos elementos del sistema de cableado.</li>
 <li><strong>Canaleta</strong>. Es una estructura metálica o de plástico que alberga en su interior todo el cableado de
 red, de modo que el acceso a cualquier punto esté más organizado y se eviten deterioros indeseados en los cables.</li>
-<li><strong>Placas de conectores y rosetas</strong>. Son conectores que se insertan en las canaletas, o se adosan a la pared y que sirven de interfaz entre el latiguillo que lleva la señal al nodo y el cable de red.</li>
+<li><strong>Rosetas de red</strong>. Proporcionan un punto de terminación del cableado permanente y permiten conectar dispositivos mediante un latiguillo.</li>
 </ul>
 <h2 id="22-conectores-para-fibra-optica">2.2. Conectores para fibra óptica</h2>
-<p>Los conectores más comunes utilizados en instalaciones de fibra óptica para redes de área local son los conectores ST y SC. En redes FDDI suele utilizarse el conector de tipo MIC.</p>
+<p>Los conectores más habituales en las instalaciones de fibra óptica son <strong>LC</strong> y <strong>SC</strong>. El conector <strong>ST</strong> también puede encontrarse, especialmente en instalaciones antiguas.</p>
 <ul>
-<li>El <strong>conector SC (Straight Connection)</strong> es un conector de inserción directa. Suele utilizarse en conmutadores Ethernet de tipo Gigabit. La conexión de la fibra óptica al conector requiere el pulido de la fibra y la alineación de la fibra con el conector.</li>
+<li>El <strong>conector LC (Lucent Connector)</strong> es un conector compacto que utiliza un mecanismo de inserción y extracción. Su reducido tamaño permite instalar muchos conectores en poco espacio, por lo que es muy habitual en equipos de red y centros de datos.</li>
+</ul>
+<p><img alt="Conector LC" src="../img/conector-lc.png" /></p>
+<ul>
+<li>El <strong>conector SC (Subscriber Connector)</strong> es un conector de mayor tamaño que el LC y utiliza un mecanismo de inserción y extracción tipo push-pull. Se utiliza en diferentes instalaciones de fibra óptica.</li>
 </ul>
 <p><img alt="Conector SC" src="../img/conector-sc.png" /></p>
 <ul>
-<li>El <strong>conector ST (Straight Tip)</strong> es un conector semejante al SC pero requiere un giro del conector para la inserción del mismo, de modo semejante a los conectores coaxiales. Suele utilizarse en instalaciones Ethernet híbridas entre cables de pares y fibra óptica. Como en el caso del conector SC, también se requiere el pulido y la alineación de la fibra.</li>
+<li>El <strong>conector ST (Straight Tip)</strong> utiliza un mecanismo de conexión tipo bayoneta, que requiere girar el conector para fijarlo. Actualmente es menos habitual y se encuentra principalmente en instalaciones antiguas.</li>
 </ul>
 <p><img alt="Conector ST" src="../img/conector-st.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>LC, SC y ST cumplen la misma función: conectar una fibra óptica con otro elemento de la instalación. Se diferencian principalmente por su diseño, tamaño y mecanismo de conexión.</p>
+</div>
 <h2 id="23-herramientas-usadas-para-la-conectorizacion">2.3. Herramientas usadas para la conectorización</h2>
-<p>La creación de las conexiones de la red debe ser realizada con sumo cuidado. La mayor parte de los
-problemas de las redes de área local, una vez que han entrado en su régimen de explotación, se
-relacionan directamente con problemas en los cables o en los conectores</p>
-<p>Las herramientas utilizadas en la construcción de las conexiones del cableado dependerán del tipo de
-cable y de conector.</p>
-<p>Estas herramientas toman formas especializadas como alicates, cuchillas y crimpadores.</p>
+<p>La creación de las conexiones de la red debe ser realizada con sumo cuidado. Una instalación de cableado realizada incorrectamente puede provocar problemas de conectividad, pérdida de rendimiento e incluso enlaces que no cumplen las especificaciones correspondientes.</p>
+<p>Las herramientas utilizadas en la construcción de las conexiones del cableado dependerán del tipo de cable y de conector.</p>
+<p><strong>Para cableado de cobre</strong>:</p>
+<ul>
+<li>Pelacables y cortadora.</li>
+<li>Crimpadora. cuando se utilizan conectores que requieren crimpado.</li>
+<li>Comprobador de cableado: permite verificar continuidad, orden de los conductores, pares, etc.</li>
+<li>Certificador de cableado.</li>
+</ul>
 <p>Además de las herramientas de conectorización, de los cables y de los conectores, son necesarios
 algunos otros componentes que cooperan en la calidad de la instalación:</p>
 <ul>
-<li><strong>Macarrón termorretráctil</strong>. Se trata de cables huecos construidos con un material plástico termorretráctil,</li>
+<li><strong>Macarrón termorretráctil</strong>. Es un material aislante que se contrae al aplicarle calor y se utiliza para proteger, aislar o reforzar determinadas conexiones y terminaciones.</li>
 <li><strong>Bridas</strong>. Son elementos plásticos que abrochan los cables entre sí o a los armarios y canaletas por donde se instalan de modo que se fije la trayectoria del cable y se impida su movilidad.</li>
-<li><strong>Etiquetas identificativas</strong>. Constituyen un sistema de información que se adjunta a cada cable para tenerlo identificado en todo momento.</li>
+<li><strong>Etiquetas identificativas</strong>. La identificación del cableado forma parte de la administración del cableado estructurado. Consiste en identificar de forma clara y coherente los cables, sus extremos, paneles de parcheo, rosetas y puertos para facilitar su instalación, documentación, localización y mantenimiento.</li>
 <li><strong>Otro tipo de herramientas</strong> más comunes como tijeras, pelacables, destornilladores, punzones, cuchillas, pinzas, resinas, cinta aislante, etc.</li>
 </ul>
 
@@ -1969,7 +1975,7 @@ algunos otros componentes que cooperan en la calidad de la instalación:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["header.autohide", "navigation.instant", "content.code.annotate", "navigation.tracking", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "content.code.annotate", "navigation.tracking", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>

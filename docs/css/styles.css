@@ -64,9 +64,10 @@ pre.terminal {
 }
 
 /* Ocultar TOC / navegación secundaria */
+/*
 .md-sidebar--secondary {
   display: none !important;
-}
+}*/
 
 /* Hacer que el contenido ocupe el espacio */
 .md-content {
