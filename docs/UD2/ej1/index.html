@@ -1754,10 +1754,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-5-crear-una-pequena-lan-completa" class="md-nav__link">
+  <a href="#ejercicio-5-crear-una-pequena-lan-con-repetidor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 5. Crear una pequeña LAN completa
+        Ejercicio 5. Crear una pequeña LAN con repetidor
       
     </span>
   </a>
@@ -1900,10 +1900,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicio-5-crear-una-pequena-lan-completa" class="md-nav__link">
+  <a href="#ejercicio-5-crear-una-pequena-lan-con-repetidor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejercicio 5. Crear una pequeña LAN completa
+        Ejercicio 5. Crear una pequeña LAN con repetidor
       
     </span>
   </a>
@@ -2149,62 +2149,65 @@ Translating "asd"...domain server (255.255.255.255)
 <p>Para volver que el router vuelva a un estado desbloqueado, usa la combinación: <strong><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-6">6</kbd></span></strong></p>
 </div>
 <hr />
-<h2 id="ejercicio-5-crear-una-pequena-lan-completa">Ejercicio 5. Crear una pequeña LAN completa</h2>
-<p>Integrar los conocimientos adquiridos en los ejercicios anteriores, para crear una pequeña red local con un router conectado a un switch, y tres PCs conectados a este.</p>
+<h2 id="ejercicio-5-crear-una-pequena-lan-con-repetidor">Ejercicio 5. Crear una pequeña LAN con repetidor</h2>
+<p>Integrar los conocimientos adquiridos en los ejercicios anteriores para crear una pequeña red local formada por un router, dos switches, cuatro PCs y un repetidor.</p>
+<p><strong>Todos los dispositivos de la red pertenecerán a la misma red.</strong></p>
 <p><strong>Topología</strong>:</p>
-<div class="highlight"><pre><span></span><code>             ┌── PC1
-             │
-PC2 ─── Switch ─── Router
-             │
-             └── PC3
+<div class="highlight"><pre><span></span><code>             ┌── PC1                  ┌── PC3
+             │                        │
+Router ─── Switch ─── Repetidor ─── Switch
+             │                        │
+             └── PC2                  └── PC4
 </code></pre></div>
 <p><strong>Configuración</strong>:</p>
-<p>Red:</p>
-<p><code>192.168.50.0/24</code></p>
+<p>Red:
+<code>192.168.50.0/24</code></p>
 <table>
 <thead>
 <tr>
 <th>Dispositivo</th>
 <th>Dirección IP</th>
-<th>Máscara</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Router G0/0</td>
 <td><code>192.168.50.1</code></td>
-<td><code>255.255.255.0</code></td>
 </tr>
 <tr>
 <td>PC1</td>
 <td><code>192.168.50.10</code></td>
-<td><code>255.255.255.0</code></td>
 </tr>
 <tr>
 <td>PC2</td>
 <td><code>192.168.50.20</code></td>
-<td><code>255.255.255.0</code></td>
 </tr>
 <tr>
 <td>PC3</td>
 <td><code>192.168.50.30</code></td>
-<td><code>255.255.255.0</code></td>
+</tr>
+<tr>
+<td>PC4</td>
+<td><code>192.168.50.40</code></td>
 </tr>
 </tbody>
 </table>
-<p>Puerta de enlace de los tres PCs:</p>
-<p><code>192.168.50.1</code></p>
-<p><strong>Tareas</strong>:</p>
+<p><strong>Tareas:</strong></p>
 <ol>
-<li>Crear la topología.</li>
-<li>Conectar todos los dispositivos.</li>
-<li>Configurar las direcciones IP.</li>
-<li>Configurar la interfaz del router.</li>
-<li>Activar la interfaz del router.</li>
-<li>Comprobar la conectividad entre los PCs.</li>
+<li>Crear la topología indicada.</li>
+<li>Conectar correctamente todos los dispositivos.</li>
+<li>Configurar las direcciones IP de los cuatro PCs.</li>
+<li>Configurar la dirección IP de la interfaz G0/0 del router.</li>
+<li>Comprobar que todos los dispositivos pertenecen a la misma red.</li>
+<li>Comprobar la conectividad entre los cuatro PCs mediante ping.</li>
 <li>Hacer ping desde cada PC al router.</li>
-<li>Consultar la tabla MAC del switch, con <code>show mac address-table</code> desde el CLI.</li>
+<li>Consultar la tabla MAC de los switches mediante show mac address-table desde el CLI.</li>
 </ol>
+<div class="admonition nota">
+<p class="admonition-title">Note</p>
+<p>Modifica la actividad para que el repetidor sea Wi-fi (Access Point). ¿Qué cambios será necesario hacer?</p>
+</div>
+<hr />
 <h2 id="ejercicio-6-crear-una-red-wi-fi-con-dhcp-y-seguridad-wpa2-personal">Ejercicio 6. Crear una red Wi-Fi con DHCP y seguridad WPA2 Personal</h2>
 <p>En esta práctica crearás una pequeña red inalámbrica utilizando un router inalámbrico, un portátil y un smartphone. Los dispositivos se conectarán mediante Wi-Fi y obtendrán automáticamente su configuración IP mediante <strong>DHCP</strong>.</p>
 <p>Además, configurarás la seguridad de la red utilizando <strong>WPA2 Personal</strong> y modificarás la configuración inalámbrica del router para trabajar únicamente con una de las tres frecuencias disponibles.</p>
@@ -2291,7 +2294,7 @@ Router Wi-Fi
 <hr />
 <!--
 
-Repetidores, televisores inteligentes, impresora, tablet, servidores HTTP.
+impresora, tablet, servidores HTTP.
 
 -->
 
