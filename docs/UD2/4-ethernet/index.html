@@ -1412,6 +1412,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4.1. Tipos de Ethernet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#10gbase-t" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10GBASE-T
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1831,6 +1848,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4.1. Tipos de Ethernet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#10gbase-t" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10GBASE-T
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1873,44 +1907,91 @@
 
 
 <h1 id="4-la-red-ethernet">4. La red Ethernet</h1>
-<p>Ethernet es la red de norma <strong>IEEE 802.3</strong>, que utiliza el <strong>protocolo de acceso al medio CSMA/CD</strong> (Carrier Sense Multiple Access with Collision Detection o, en español, acceso múltiple con escucha de portadora y detección de colisiones) en el que las estaciones están permanentemente a la escucha del canal y, cuando lo encuentran libre de señal, efectúan sus transmisiones. Esto puede llevar a una <strong>colisión</strong> que hará que las estaciones suspendan sus transmisiones, esperen un tiempo aleatorio, transmitan una trama de aviso (<strong>jam frame</strong>) y vuelvan a intentarlo. En el siguiente diagrama se describe el proceso de contención CSMA/CD:</p>
-<p><img alt="CSMA/CD" src="../img/csma-cd.png" /></p>
-<p>Cualquier estación conectada a una red <strong>IEEE 802.3</strong> debe poseer una tarjeta de red que cumpla con este estándar y con los componentes electrónicos y el software adecuado para la generación y recepción de tramas.</p>
-<h2 id="41-tipos-de-ethernet">4.1. Tipos de Ethernet</h2>
-<p>El modo en que las tramas IEEE 802.3 son puestas en el medio de transmisión físico depende de las
-especificaciones de hardware y de los requerimientos del tipo de cableado elegido. Se definen para ello varios
-subestándares, todos ellos integrados dentro de la IEEE 802.3.</p>
-<p>En algunas instalaciones de alto rendimiento ya se está instalando Ethernet 10G, que sería la red con
-tecnología Ethernet a 10 Gbps, mayoritariamente sobre fibra, aunque hay algunos intentos con éxito
-utilizando cableado trenzado de cobre.</p>
+<p>Ethernet es una tecnología de red utilizada principalmente en redes de área local (LAN) y definida por la norma <strong>IEEE 802.3</strong>. Permite la comunicación entre dispositivos mediante diferentes medios de transmisión, como el cable de par trenzado y la fibra óptica.</p>
+<p>En las primeras redes Ethernet, varios dispositivos compartían el mismo medio de transmisión. Por este motivo, era necesario controlar el acceso al medio para evitar que varias estaciones transmitieran al mismo tiempo.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
 <ul>
 <li>
-<p><strong>10GBaseT</strong>. Es un estándar definido en la norma IEEE 802.3an, capaz de transmitir datos a 10 Gbps. Utiliza cableado de categorías 6 o 7 con una longitud máxima por segmento de 100 metros. Suele utilizarse para conectar servidores o estaciones a la LAN, pero no para grandes distancias.</p>
+<p><strong>Estación</strong>: dispositivo conectado a la red que quiere transmitir, como un ordenador.</p>
 </li>
 <li>
-<p>1<strong>0GBaseSR, 10GBaseSW, 10GBaseLR, 10GBaseLW, 10GBaseER y 10GBaseEW</strong>. Son estándares modernos de fibra óptica para transmisiones de 10 Gbps que están definidos en la norma IEEE 802.3ae. Algunas de estas normas pueden llegar a los 40 km.</p>
+<p><strong>Medio o canal</strong>: medio físico que utilizan las estaciones para comunicarse, como un cable de red compartido.</p>
+</li>
+<li>
+<p><strong>Actividad en el canal</strong>: indica que otra estación está utilizando el medio para transmitir.</p>
+</li>
+<li>
+<p><strong>Colisión</strong>: ocurre cuando dos estaciones transmiten al mismo tiempo sobre un medio compartido y sus señales interfieren entre sí.</p>
+</li>
+<li>
+<p><strong>Esperar</strong>: cuando el canal está ocupado o se ha producido una colisión, la estación espera antes de volver a intentar transmitir.</p>
 </li>
 </ul>
+</div>
+<p>Para ello se utilizaba <strong>CSMA/CD</strong> (Carrier Sense Multiple Access with Collision Detection o, en español, acceso múltiple con escucha de portadora y detección de colisiones). Una estación comprueba si el medio está libre antes de transmitir. Si dos estaciones transmiten simultáneamente, puede producirse una <strong>colisión</strong>. Cuando las estaciones detectan la colisión, detienen la transmisión y esperan un tiempo aleatorio antes de volver a intentarlo.</p>
+<p>En el siguiente diagrama se describe el proceso de contención CSMA/CD:</p>
+<p><img alt="CSMA/CD" src="../img/csma-cd.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Ethernet actual</p>
+<p>CSMA/CD se utiliza en Ethernet cuando el medio funciona en <strong>half-duplex</strong>, es decir, cuando varios dispositivos comparten el mismo medio y no pueden transmitir y recibir simultáneamente.</p>
+<p>En las redes Ethernet actuales es habitual utilizar <strong>switches</strong> y enlaces <strong>full-duplex</strong>. En este modo, cada dispositivo dispone de un enlace independiente con el switch y puede transmitir y recibir al mismo tiempo. Al no existir un medio compartido, no se producen colisiones y CSMA/CD no es necesario.</p>
+</div>
+<p>Cualquier dispositivo conectado a una red Ethernet debe disponer de una <strong>interfaz de red</strong> compatible con la tecnología Ethernet utilizada y con el medio de transmisión correspondiente. La interfaz de red se encarga de enviar y recibir las tramas Ethernet.</p>
+<h2 id="41-tipos-de-ethernet">4.1. Tipos de Ethernet</h2>
+<p>La norma IEEE 802.3 define diferentes tecnologías Ethernet. Estas tecnologías pueden variar en aspectos como la velocidad de transmisión, el medio físico utilizado y la distancia máxima del enlace.</p>
+<p>La denominación de las tecnologías Ethernet permite identificar algunas de sus características. Por ejemplo, en <strong>1000BASE-T</strong>, "1000" indica una velocidad de 1000 Mbps y la letra "T" indica que se utiliza cable de par trenzado.</p>
+<p>Algunas tecnologías Ethernet habituales son:</p>
+<ul>
+<li><strong>10BASE-T</strong>: Ethernet a 10 Mbps sobre cable de par trenzado.</li>
+<li><strong>100BASE-TX</strong>: Fast Ethernet a 100 Mbps sobre cable de par trenzado.</li>
+<li><strong>1000BASE-T</strong>: Gigabit Ethernet a 1 Gbps sobre cable de par trenzado.</li>
+<li><strong>2.5GBASE-T</strong>: Ethernet a 2,5 Gbps sobre cable de par trenzado.</li>
+<li><strong>5GBASE-T</strong>: Ethernet a 5 Gbps sobre cable de par trenzado.</li>
+<li><strong>10GBASE-T</strong>: Ethernet a 10 Gbps sobre cable de par trenzado.</li>
+<li><strong>10GBASE-SR y 10GBASE-LR</strong>: Ethernet a 10 Gbps sobre fibra óptica.</li>
+</ul>
+<p>Una misma tecnología Ethernet puede disponer de diferentes variantes para adaptarse a distintos medios de transmisión y distancias.</p>
+<h3 id="10gbase-t">10GBASE-T</h3>
+<p><strong>10GBASE-T</strong> permite transmitir a <strong>10 Gbps utilizando cableado de par trenzado de cobre</strong>. Es una tecnología utilizada en redes que necesitan velocidades superiores a 1 Gbps, por ejemplo, para conectar servidores, estaciones de trabajo o determinados equipos de red.</p>
+<p>10GBASE-T permite aprovechar instalaciones de cableado de cobre adecuadas para alcanzar distancias de hasta 100 metros en las condiciones establecidas por las normas de cableado.</p>
 <h2 id="42-las-colisiones-en-ethernet">4.2. Las colisiones en Ethernet</h2>
-<p>Cuando Ethernet pone una trama en el bus de la red, esta trama viaja por todo el bus para alcanzar a todas las estaciones que están conectadas a él porque cualquiera de ellas, algunas o todas pueden ser las destinatarias de la información que viaja en la trama.</p>
-<p>Sin embargo, una trama no puede saltar a otra red. Se dice que la trama se circunscribe a su dominio de colisión.</p>
-<p>Cuando un nodo tiene que transmitir información a otro que está en un dominio de colisión distinto tiene que acudir a los servicios de otros dispositivos de red intermedios como puentes o enrutadores. Estos dispositivos separan los dominios de colisión y son los encargados de ampliar la red de área local con otros dominios de colisión, cada uno de los cuales se comporta como una red de área local completa. Frecuentemente a estos dominios de colisión se les denomina segmentos de red.</p>
-<p>Los protocolos de red que funcionan con direcciones de destino de tipo multidifusión, pueden producir tormentas de difusión, en donde se generan avalanchas de tramas que pueden colapsar la red. En estos casos es muy importante que los dominios de colisión estén perfectamente acotados.</p>
+<p>Una <strong>colisión</strong> se produce cuando dos dispositivos transmiten al mismo tiempo utilizando un medio compartido y sus señales interfieren entre sí.</p>
+<p>En las antiguas redes Ethernet basadas en un medio compartido, como las redes que utilizaban cable coaxial o concentradores (hubs), varios dispositivos podían pertenecer al mismo <strong>dominio de colisión</strong>. En estas redes era necesario utilizar CSMA/CD para controlar el acceso al medio.</p>
+<p>Un <strong>dominio de colisión</strong> es la parte de una red en la que dos dispositivos pueden interferir entre sí al transmitir simultáneamente.</p>
+<p>Los switches permiten separar los dominios de colisión. Cada puerto del switch proporciona un enlace independiente para el dispositivo conectado a él. Cuando estos enlaces funcionan en full-duplex, no se producen colisiones.</p>
+<p>Por este motivo, en una red Ethernet moderna basada en switches, las colisiones no son un funcionamiento normal de la red.</p>
+<div class="admonition note">
+<p class="admonition-title">Dominio de colisión y dominio de broadcast</p>
+<p>Un dominio de colisión y un dominio de broadcast son conceptos diferentes.</p>
+<p>El <strong>dominio de colisión</strong> está relacionado con la posibilidad de que dos dispositivos interfieran al transmitir simultáneamente.</p>
+<p>El <strong>dominio de broadcast</strong> es el conjunto de dispositivos que reciben una trama de difusión (broadcast). Los routers permiten separar diferentes dominios de broadcast.</p>
+</div>
+<p>Una cantidad excesiva de tráfico de difusión o multicast puede generar una <strong>tormenta de tráfico</strong>, que puede afectar al funcionamiento de la red. Por este motivo, las redes deben estar correctamente diseñadas y configuradas.</p>
 <h2 id="43-tecnologia-power-over-ethernet">4.3. Tecnología Power over Ethernet</h2>
-<p>Power over Ethernet o abreviadamente PoE es un estándar definido en la norma IEEE
-803.af que permite suministrar energía eléctrica a un dispositivo de red a través del cable de datos de la
-conexión Ethernet.</p>
-<p>PoE especifica dos tipos de dispositivos:</p>
+<p><strong>Power over Ethernet</strong>, abreviadamente <strong>PoE</strong>, es una tecnología definida mediante diferentes normas de la familia IEEE 802.3 que permite suministrar alimentación eléctrica a determinados dispositivos a través del mismo cable de par trenzado utilizado para la comunicación Ethernet.</p>
+<p>PoE resulta especialmente útil cuando un dispositivo necesita tanto conexión de red como alimentación eléctrica. De esta forma, se puede utilizar un único cable para proporcionar ambos servicios.</p>
+<p>PoE especifica dos tipos principales de dispositivos:</p>
 <ol>
 <li>
-<p><strong>PSE (Power Sourcing Equipment)</strong>: es el dispositivo que suministra la energía, por ejemplo un puerto de un conmutador con tecnología PoE.</p>
+<p><strong>PSE (Power Sourcing Equipment)</strong>: es el dispositivo que suministra la alimentación. Por ejemplo, un puerto de un switch compatible con PoE.</p>
 </li>
 <li>
-<p><strong>PD (Powered Device)</strong>: es el dispositivo que es alimentado por el PSE, por ejemplo, la cámara web PoE. La instalación de dispositivos PoE requiere sistemas de cableado de par de cobre con categoría 5 o superior.</p>
+<p><strong>PD (Powered Device)</strong>: es el dispositivo que recibe la alimentación proporcionada por el PSE. Por ejemplo, un punto de acceso Wi-Fi, un teléfono IP o una cámara IP compatible con PoE.</p>
 </li>
 </ol>
-<p>La mayor parte de los conmutadores modernos incorporan PoE, pero en los casos en que no se disponga de esta tecnología es posible incorporar al puerto del conmutador un dispositivo PoE que tiene dos entradas y una salida.</p>
 <p><img alt="PoE" src="../img/poe.png" /></p>
+<p>Existen diferentes versiones de PoE. Entre ellas se encuentran <strong>IEEE 802.3af</strong>, <strong>IEEE 802.3at</strong> e <strong>IEEE 802.3bt</strong>, que permiten diferentes niveles de potencia.</p>
+<p>La norma IEEE 802.3bt amplió las posibilidades de PoE y permite utilizar los cuatro pares del cableado para proporcionar alimentación a determinados dispositivos.</p>
+<p>Cuando un switch no dispone de PoE, se puede utilizar un <strong>inyector PoE</strong>. Este dispositivo combina los datos procedentes del switch con la alimentación eléctrica y los envía por el cable Ethernet hacia el dispositivo que se quiere alimentar.</p>
+<div class="admonition note">
+<p class="admonition-title">Ejemplo</p>
+<p>Un punto de acceso Wi-Fi compatible con PoE puede recibir mediante un único cable Ethernet:</p>
+<ul>
+<li>Los <strong>datos</strong> necesarios para comunicarse con la red.</li>
+<li>La <strong>alimentación eléctrica</strong> necesaria para funcionar.</li>
+</ul>
+</div>
 
 
 
