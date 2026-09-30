@@ -12,7 +12,7 @@
         <link rel="prev" href="../4-ethernet/">
       
       
-        <link rel="next" href="../ej1/">
+        <link rel="next" href="../6-cableado-certificado/">
       
       
         
@@ -1570,17 +1570,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#547-alimentacion-mediante-poe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.4.7. Alimentación mediante PoE
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1602,7 +1591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../asd.md" class="md-nav__link">
+      <a href="../6-cableado-certificado/" class="md-nav__link">
         
   
   
@@ -1630,7 +1619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../asd.md" class="md-nav__link">
+      <a href="../7-centro-procesos-datos/" class="md-nav__link">
         
   
   
@@ -1658,7 +1647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../asd.md" class="md-nav__link">
+      <a href="../8-residuos/" class="md-nav__link">
         
   
   
@@ -1741,42 +1730,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../asd.md" class="md-nav__link">
+      <a href="../anexo1/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Anexo 1
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../asd.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Anexo 2
+    Anexo 1. La tarjeta de red
   
 
     
@@ -1859,7 +1820,7 @@
   <span class="md-ellipsis">
     
   
-    Actividad 1
+    A. Ejercicios básicos de Cisco Packet Tracer
   
 
     
@@ -1887,7 +1848,7 @@
   <span class="md-ellipsis">
     
   
-    Actividad 2
+    B. Práctica inicial
   
 
     
@@ -2083,17 +2044,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#547-alimentacion-mediante-poe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.4.7. Alimentación mediante PoE
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2115,91 +2065,6 @@
                   
 
 
-
-<!--
-
-# 5. El cableado de la red
-
-## 5.1. El proyecto de instalación
-
-La instalación consiste en la ejecución ordenada, según las directrices del proyecto de instalación de un conjunto de tareas que revierten en proporcionar el servicio que necesitaba el cliente que solicitó la instalación.
-
-Algunas de estas tareas son:
-
-- Instalación de las tomas de corriente.
-- Instalación de rosetas y jacks. Es la instalación de los puntos de red finales desde los que se conectarán los equipos de comunicaciones.
-- Tendido de los cables. Se trata de medir la distancia que debe recorrer cada cable y añadir- le una longitud prudente que nos permita trabajar cómodamente con él antes de cortarlo.
-- Conectorización de los cables en los patch panels y en las rosetas utilizando las herramientas de crimpado apropiadas. A esto se le denomina cross-connect.
-- Probado de los cables instalados.
-- Etiquetado y documentación del cable y conectores. Todo cable debe ser etiquetado en ambos extremos así como los conectores de patch panels y rosetas de modo que queden identificados unívocamente
-- Instalación de los adaptadores de red.
-- Instalación de los dispositivos de red. Se trata de instalar los concentradores, conmutadores, puentes y encaminadores.
-
-Configuración del software de red en clientes y servidores de la red.
-
-## 5.2. Elementos de la instalación
-
-Los cables y conectores deben ser fijados a las instalaciones arquitectónicas de los edificios y además hay que hacerlos convivir con instalaciones de otra naturaleza que probablemente ya hayan sido tendidas con anterioridad: agua, fuerza eléctrica, aire acondicionado, etc.
-
-### A. Armarios y canaletas
-
-En instalaciones de tipo medio o grande, los equipos de
-comunicaciones se instalan en armarios especiales que tienen unas dimensiones estandarizadas y en los que es fácil su manipulación y la fijación de los cables que a ellos se conectan. Dentro de estos armarios o racks se instalan bandejas de soporte o patch panels para la conexión de jacks o de otro tipo de conectores.
-
-### B. Suelos y techos técnicos
-
-Las canalizaciones tendidas por suelos y techos técnicos mejoran la limpieza de la instalación haciéndola además mucho más estética. Existen rosetas especiales para extraer de los falsos suelos tanto datos como fuerza, pero en el diseño hay que poner cuidado en que no estorben al paso y en que queden protegidas para evitar su deterioro.
-
-![Techos](img/techo.png)
-
-## 5.3. La instalación eléctrica
-
-Todos los dispositivos de red deben estar conectados a enchufes con tierra. Las carcasas de estos dispositivos, los armarios, las canaletas mecánicas, etc., también deben ser **conectados a tierra**.
-
-Otro problema importante viene originado por los cortes de corriente o las subidas y bajadas de tensión. Para ello podemos utilizar sistemas de alimentación ininterrumpida. Los **sistemas de alimentación ininterrumpida (SAI)** corrigen todas las deficiencias de la corriente eléctrica.
-
-El **SAI** contiene en su interior unos acumuladores que se cargan en el régimen normal de funcionamiento. En caso de corte de corriente, los acumuladores producen la energía eléctrica que permite guardar los datos que tuvieran abiertos las aplicaciones de los usuarios y cerrar ordenadamente los sistemas operativos.
-
-Los servidores pueden comunicarse con un SAI a través de alguno de sus puertos de comunicaciones, de modo que el SAI informa al servidor de las incidencias que observa en la corriente eléctrica.
-
-## 5.4. Elementos de conectividad
-
-### A. Patch panels y latiguillos
-
-- Un patch panel es un dispositivo de interconexión a través del cual los cables instalados se pueden conectar a otros dispositivos de red o a otros patch panels.
-- Sobre un armario se instalan patch panels que se conectan al cableado de la instalación por todo el edificio y otros patch panels que se conectan a los conectores de los dispositivos de red.
-- Después, una multitud de latiguillos conectarán unos patch panels con los otros.
-- El cable largo instalado conectará las rosetas con los patch panels.
-
-### B. Conexiones a rosetas RJ45
-
-En redes de área local sobre cables **UTP** deben utilizarse conectores **RJ45**. De los cuatro pares del cable UTP, la red solo utilizará dos de ellos. Los otros dos pueden utilizarse para telefonía o alguna otra aplicación de telecomunicaciones.
-
-![Rosetas](img/rosetas.png)
-
-### C. Confección de latiguillos RJ45
-
-Las estaciones de la red se conectan a los dispositivos de red a través de cables construidos con el código de colores y contactos de la tabla anterior en ambos extremos. El cable se confecciona de modo semejante a la conexión a la roseta aunque deberemos cambiar la herramienta que ahora tendrá forma de alicate.
-
-En el conector RJ45 los pines deben leerse con la pestaña del conector hacia abajo, de modo que en esa posición el pin número uno queda a la izquierda.
-
-Sin embargo, cuando se quieren conectar dos ordenadores directamente por sus tarjetas de red sin ningún dispositivo intermedio se tiene que utilizar un cable cruzado, que altera el orden de los pares para que lo que es recepción en un extremo sea emisión en el otro y viceversa. Para ello se intercambian en uno de los dos extremos los pares 2 y 3, es decir, en un extremo se utiliza la norma T568A y en el otro extremo la norma T568B.
-
-![RJ45](img/rj45.png)
-
-### D. Etiquetado de los cables
-
-La norma **EIA/TIA-606** especifica que cada terminación de hardware debe tener alguna etiqueta que lo identifique de manera exclusiva. Un cable tiene **dos terminadores**, por tanto cada uno de estos extremos recibirá un nombre.
-
-Se recomienda la utilización de etiquetas que incluyan un **identificador de sala** y un **identificador de conector**, así sabremos todo sobre el cable: dónde empieza y dónde acaba.
-
-Como vemos en la imagen, podríamos etiquetar un cable con el siguiente identificador: 03RS02-05RS24. Este cable indicaría que está tendido desde la roseta (RS) número 02 de la sala 03 hasta la roseta 24 de la sala 05.
-
-Las rosetas en las salas 03 y 05 irían etiquetadas con 03RS02 y 05RS24 respectivamente.
-
-![Etiqueta cableado](img/etiqueta-cable.png)
-
--->
 
 <h1 id="5-el-cableado-de-red">5. El cableado de red</h1>
 <p>El <strong>cableado de red</strong> es el conjunto de cables y elementos de conexión que permiten interconectar los diferentes dispositivos de una red. En una instalación profesional no basta con conseguir que los equipos se comuniquen: el cableado debe estar <strong>correctamente planificado, instalado, identificado y comprobado</strong>.</p>
@@ -2270,7 +2135,14 @@ Las rosetas en las salas 03 y 05 irían etiquetadas con 03RS02 y 05RS24 respecti
 <p>Los equipos deben conectarse a una instalación eléctrica adecuada y, cuando corresponda, disponer de las medidas de protección y puesta a tierra previstas por la normativa.</p>
 <p>Los armarios de comunicaciones suelen concentrar una gran cantidad de equipos, por lo que es especialmente importante mantener organizada la alimentación eléctrica y evitar que los cables de alimentación y de datos formen una instalación desordenada.</p>
 <p>Uno de los elementos que puede utilizarse para mejorar la continuidad del servicio es el <strong>SAI (Sistema de Alimentación Ininterrumpida)</strong>.</p>
+<div class="two-columns">
+<div>
+<p><img alt="SAI industrial" src="../img/sai-industrial.png" /></p>
+</div>
+<div>
 <p><img alt="SAI" src="../img/sai.png" /></p>
+</div>
+</div>
 <p>Un SAI dispone de baterías que permiten mantener temporalmente alimentados los equipos cuando se produce un corte de corriente. Dependiendo del modelo, también puede proporcionar protección frente a determinadas alteraciones de la alimentación eléctrica.</p>
 <p>Esto permite disponer de tiempo para mantener el servicio durante un corte breve o realizar un apagado controlado de los equipos.</p>
 <div class="admonition note">
@@ -2399,29 +2271,6 @@ Las rosetas en las salas 03 y 05 irían etiquetadas con 03RS02 y 05RS24 respecti
 <p class="admonition-title">Importante</p>
 <p><strong>Comprobar un cable y certificar un cable no son exactamente lo mismo.</strong></p>
 <p>Un comprobador básico puede indicar que los conductores están correctamente conectados, mientras que un certificador realiza mediciones más completas para determinar si el enlace cumple los requisitos establecidos para el cableado que se pretende instalar.</p>
-</div>
-<h3 id="547-alimentacion-mediante-poe">5.4.7. Alimentación mediante PoE</h3>
-<p>En algunas redes Ethernet es posible utilizar el mismo cable de red para transportar <strong>datos y alimentación eléctrica</strong>. Esta tecnología se denomina <strong>PoE (Power over Ethernet)</strong>.</p>
-<p>PoE resulta especialmente útil para dispositivos que necesitan conectividad de red y alimentación eléctrica, como puntos de acceso Wi-Fi, teléfonos IP o cámaras IP.</p>
-<p>En una instalación PoE podemos distinguir dos elementos:</p>
-<ul>
-<li><strong>PSE (Power Sourcing Equipment)</strong>: dispositivo que proporciona la alimentación, como un switch PoE.</li>
-<li><strong>PD (Powered Device)</strong>: dispositivo que recibe la alimentación, como una cámara IP compatible con PoE.</li>
-</ul>
-<p><img alt="PoE" src="../img/poe.png" /></p>
-<p>Las primeras versiones estandarizadas de PoE utilizaban dos pares del cableado. Posteriormente, <strong>IEEE 802.3bt</strong> amplió PoE para utilizar los cuatro pares, permitiendo proporcionar una mayor potencia a los dispositivos compatibles.</p>
-<div class="admonition note">
-<p class="admonition-title">Ejemplo</p>
-<p>Un punto de acceso Wi-Fi compatible con PoE puede recibir simultáneamente:</p>
-<ul>
-<li>Los <strong>datos</strong> necesarios para comunicarse con la red.</li>
-<li>La <strong>alimentación eléctrica</strong> necesaria para funcionar.</li>
-</ul>
-<p>De esta forma, puede instalarse utilizando un único cable de red.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Importante</p>
-<p>Para utilizar PoE hay que comprobar la compatibilidad entre el <strong>PSE</strong>, el <strong>PD</strong> y el cableado. No todos los dispositivos proporcionan o aceptan la misma potencia.</p>
 </div>
 
 
