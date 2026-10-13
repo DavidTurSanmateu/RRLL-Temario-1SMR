@@ -1,0 +1,3129 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2-gestion/">
+      
+      
+        <link rel="next" href="../4-configuracion/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>3. La familia de protocolos TCP/IP - Redes locales</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1%207.775V2.75C1%201.784%201.784%201%202.75%201h5.025c.464%200%20.91.184%201.238.513l6.25%206.25a1.75%201.75%200%200%201%200%202.474l-5.026%205.026a1.75%201.75%200%200%201-2.474%200l-6.25-6.25A1.75%201.75%200%200%201%201%207.775m1.5%200c0%20.066.026.13.073.177l6.25%206.25a.25.25%200%200%200%20.354%200l5.025-5.025a.25.25%200%200%200%200-.354l-6.25-6.25a.25.25%200%200%200-.177-.073H2.75a.25.25%200%200%200-.25.25ZM6%205a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2.5%201.75v11.5c0%20.138.112.25.25.25h3.17a.75.75%200%200%201%200%201.5H2.75A1.75%201.75%200%200%201%201%2013.25V1.75C1%20.784%201.784%200%202.75%200h8.5C12.216%200%2013%20.784%2013%201.75v7.736a.75.75%200%200%201-1.5%200V1.75a.25.25%200%200%200-.25-.25h-8.5a.25.25%200%200%200-.25.25m13.274%209.537zl-4.557%204.45a.75.75%200%200%201-1.055-.008l-1.943-1.95a.75.75%200%200%201%201.062-1.058l1.419%201.425%204.026-3.932a.75.75%200%201%201%201.048%201.074M4.75%204h4.5a.75.75%200%200%201%200%201.5h-4.5a.75.75%200%200%201%200-1.5M4%207.75A.75.75%200%200%201%204.75%207h2a.75.75%200%200%201%200%201.5h-2A.75.75%200%200%201%204%207.75%22/%3E%3C/svg%3E');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%208a8%208%200%201%201%2016%200A8%208%200%200%201%200%208m8-6.5a6.5%206.5%200%201%200%200%2013%206.5%206.5%200%200%200%200-13M6.5%207.75A.75.75%200%200%201%207.25%207h1a.75.75%200%200%201%20.75.75v2.75h.25a.75.75%200%200%201%200%201.5h-2a.75.75%200%200%201%200-1.5h.25v-2h-.25a.75.75%200%200%201-.75-.75M8%206a1%201%200%201%201%200-2%201%201%200%200%201%200%202%22/%3E%3C/svg%3E');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M3.499.75a.75.75%200%200%201%201.5%200v.996C5.9%202.903%206.793%203.65%207.662%204.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873%2010.794-.045%2012.622.26%2014.408.558%2016%201.94%2016%204.25c0%201.278-.954%202.575-2.44%202.734l.146.508.065.22c.203.701.412%201.455.476%202.226.142%201.707-.4%203.03-1.487%203.898C11.714%2014.671%2010.27%2015%208.75%2015h-6a.75.75%200%200%201%200-1.5h1.376a4.5%204.5%200%200%201-.563-1.191%203.84%203.84%200%200%201-.05-2.063%204.65%204.65%200%200%201-2.025-.293.75.75%200%200%201%20.525-1.406c1.357.507%202.376-.006%202.698-.318l.009-.01a.747.747%200%200%201%201.06%200%20.75.75%200%200%201-.012%201.074c-.912.92-.992%201.835-.768%202.586.221.74.745%201.337%201.196%201.621H8.75c1.343%200%202.398-.296%203.074-.836.635-.507%201.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.4%202.4%200%200%201-.507-.441%203.1%203.1%200%200%201-.633-1.248.75.75%200%200%201%201.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738%200%201.25-.615%201.25-1.25%200-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706%201.345-.46.92-.27%201.774.019%203.062l.042.19.01.05c.348.443.666.949.94%201.553a.75.75%200%201%201-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768L6.7%205.527c-.814-.68-1.75-1.462-2.692-2.619a3.7%203.7%200%200%200-1.023.88c-.406.495-.663%201.036-.722%201.508.116.122.306.21.591.239.388.038.797-.06%201.032-.19a.75.75%200%200%201%20.728%201.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75%205.677V5.5c0-.984.48-1.94%201.077-2.664.46-.559%201.05-1.055%201.673-1.353z%22/%3E%3C/svg%3E');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M13.78%204.22a.75.75%200%200%201%200%201.06l-7.25%207.25a.75.75%200%200%201-1.06%200L2.22%209.28a.75.75%200%200%201%20.018-1.042.75.75%200%200%201%201.042-.018L6%2010.94l6.72-6.72a.75.75%200%200%201%201.06%200%22/%3E%3C/svg%3E');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M0%208a8%208%200%201%201%2016%200A8%208%200%200%201%200%208m8-6.5a6.5%206.5%200%201%200%200%2013%206.5%206.5%200%200%200%200-13M6.92%206.085h.001a.749.749%200%201%201-1.342-.67c.169-.339.436-.701.849-.977C6.845%204.16%207.369%204%208%204a2.76%202.76%200%200%201%201.637.525c.503.377.863.965.863%201.725%200%20.448-.115.83-.329%201.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6%206%200%200%200-.26.16%201%201%200%200%200-.276.245.75.75%200%200%201-1.248-.832c.184-.264.42-.489.692-.661q.154-.1.313-.195l.007-.004c.1-.061.182-.11.258-.161a1%201%200%200%200%20.277-.245C8.96%206.514%209%206.427%209%206.25a.61.61%200%200%200-.262-.525A1.27%201.27%200%200%200%208%205.5c-.369%200-.595.09-.74.187a1%201%200%200%200-.34.398M9%2011a1%201%200%201%201-2%200%201%201%200%200%201%202%200%22/%3E%3C/svg%3E');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M6.457%201.047c.659-1.234%202.427-1.234%203.086%200l6.082%2011.378A1.75%201.75%200%200%201%2014.082%2015H1.918a1.75%201.75%200%200%201-1.543-2.575Zm1.763.707a.25.25%200%200%200-.44%200L1.698%2013.132a.25.25%200%200%200%20.22.368h12.164a.25.25%200%200%200%20.22-.368Zm.53%203.996v2.5a.75.75%200%200%201-1.5%200v-2.5a.75.75%200%200%201%201.5%200M9%2011a1%201%200%201%201-2%200%201%201%200%200%201%202%200%22/%3E%3C/svg%3E');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2.344%202.343za8%208%200%200%201%2011.314%2011.314A8.002%208.002%200%200%201%20.234%2010.089a8%208%200%200%201%202.11-7.746m1.06%2010.253a6.5%206.5%200%201%200%209.108-9.275%206.5%206.5%200%200%200-9.108%209.275M6.03%204.97%208%206.94l1.97-1.97a.749.749%200%200%201%201.275.326.75.75%200%200%201-.215.734L9.06%208l1.97%201.97a.749.749%200%200%201-.326%201.275.75.75%200%200%201-.734-.215L8%209.06l-1.97%201.97a.749.749%200%200%201-1.275-.326.75.75%200%200%201%20.215-.734L6.94%208%204.97%206.03a.75.75%200%200%201%20.018-1.042.75.75%200%200%201%201.042-.018%22/%3E%3C/svg%3E');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M9.504.43a1.516%201.516%200%200%201%202.437%201.713L10.415%205.5h2.123c1.57%200%202.346%201.909%201.22%203.004l-7.34%207.142a1.25%201.25%200%200%201-.871.354h-.302a1.25%201.25%200%200%201-1.157-1.723L5.633%2010.5H3.462c-1.57%200-2.346-1.909-1.22-3.004zm1.047%201.074L3.286%208.571A.25.25%200%200%200%203.462%209H6.75a.75.75%200%200%201%20.694%201.034l-1.713%204.188%206.982-6.793A.25.25%200%200%200%2012.538%207H9.25a.75.75%200%200%201-.683-1.06l2.008-4.418.003-.006-.004-.009-.006-.006-.008-.001q-.005%200-.009.004%22/%3E%3C/svg%3E');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M4.72.22a.75.75%200%200%201%201.06%200l1%20.999a3.5%203.5%200%200%201%202.441%200l.999-1a.748.748%200%200%201%201.265.332.75.75%200%200%201-.205.729l-.775.776c.616.63.995%201.493.995%202.444v.327q0%20.15-.025.292c.408.14.764.392%201.029.722l1.968-.787a.75.75%200%200%201%20.556%201.392L13%207.258V9h2.25a.75.75%200%200%201%200%201.5H13v.5q-.002.615-.141%201.186l2.17.868a.75.75%200%200%201-.557%201.392l-2.184-.873A5%205%200%200%201%208%2016a5%205%200%200%201-4.288-2.427l-2.183.873a.75.75%200%200%201-.558-1.392l2.17-.868A5%205%200%200%201%203%2011v-.5H.75a.75.75%200%200%201%200-1.5H3V7.258L.971%206.446a.75.75%200%200%201%20.558-1.392l1.967.787c.265-.33.62-.583%201.03-.722a1.7%201.7%200%200%201-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72%201.28a.75.75%200%200%201%200-1.06m.53%206.28a.75.75%200%200%200-.75.75V11a3.5%203.5%200%201%200%207%200V7.25a.75.75%200%200%200-.75-.75ZM6.173%205h3.654A.17.17%200%200%200%2010%204.827V4.5a2%202%200%201%200-4%200v.327c0%20.096.077.173.173.173%22/%3E%3C/svg%3E');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M5%205.782V2.5h-.25a.75.75%200%200%201%200-1.5h6.5a.75.75%200%200%201%200%201.5H11v3.282l3.666%205.76C15.619%2013.04%2014.543%2015%2012.767%2015H3.233c-1.776%200-2.852-1.96-1.899-3.458Zm-2.4%206.565a.75.75%200%200%200%20.633%201.153h9.534a.75.75%200%200%200%20.633-1.153L12.225%2010.5h-8.45ZM9.5%202.5h-3V6c0%20.143-.04.283-.117.403L4.73%209h6.54L9.617%206.403A.75.75%200%200%201%209.5%206Z%22/%3E%3C/svg%3E');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M1.75%202.5h10.5a.75.75%200%200%201%200%201.5H1.75a.75.75%200%200%201%200-1.5m4%205h8.5a.75.75%200%200%201%200%201.5h-8.5a.75.75%200%200%201%200-1.5m0%205h8.5a.75.75%200%200%201%200%201.5h-8.5a.75.75%200%200%201%200-1.5M2.5%207.75v6a.75.75%200%200%201-1.5%200v-6a.75.75%200%200%201%201.5%200%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto,+sans-serif:300,300i,400,400i,700,700i%7CCourier+New,+monospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto, sans-serif";--md-code-font:"Courier New, monospace"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/toc-toggle.css">
+    
+      <link rel="stylesheet" href="../../css/print-site.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-la-familia-de-protocolos-tcpip" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Redes locales" class="md-header__button md-logo" aria-label="Redes locales" data-md-component="logo">
+      
+  <img src="../../img/logo-rrll.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Redes locales
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3. La familia de protocolos TCP/IP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Redes locales" class="md-nav__button md-logo" aria-label="Redes locales" data-md-component="logo">
+      
+  <img src="../../img/logo-rrll.png" alt="logo">
+
+    </a>
+    Redes locales
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 0. Introducción a los sistemas de comunicaciones
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 0. Introducción a los sistemas de comunicaciones
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contenidos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contenidos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD0/1-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD0/2-represent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Representación de la información
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD0/3-ejercicios-res/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Ejercicios - Cambios de base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Actividades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD0/4-ejercicios-prop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Ejercicios propuestos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 1. Caracterización de redes locales
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 1. Caracterización de redes locales
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contenidos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contenidos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/1-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/2-redes-locales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Redes de área local
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/3-redes-ext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Redes de área extensa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/4-otras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Otras redes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/5-caract-lan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Características de la LAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/6-topologias-red/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Topologías de red
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/7-protocolos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Familias de protocolos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/8-osi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. El modelo de referencia OSI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/9-elementos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Elementos de la red
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Anexos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/anexo1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexo 1. Analogía del modelo OSI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/anexo2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexo 2. Distribución de la red y sus tipos básicos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Actividades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/ej1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividad 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD1/ej2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividad 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 2. La instalación física de una red
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 2. La instalación física de una red
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contenidos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contenidos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/1-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Los medios de transmisión
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/2-dispositivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Dispositivos de conexión de cables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/3-tarjeta-red/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. La tarjeta de red
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/4-ethernet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Red Ethernet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/5-cableado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. El cableado de red
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/6-cableado-certificado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Cableado estructurado y certificado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/7-centro-procesos-datos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Instalación del Centro de Proceso de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/8-residuos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Gestión de residuos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Anexos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/anexo1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexo 1. La tarjeta de red
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Actividades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/ej1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A. Ejercicios básicos. Cisco Packet Tracer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/ej2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Práctica inicial. Cisco Packet Tracer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/ej3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Ejercicios avanzados. Cisco Packet Tracer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD2/ej_eval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Práctica evaluable. Cisco Packet Tracer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tema 3. Instalación y configuración de los equipos de red
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tema 3. Instalación y configuración de los equipos de red
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contenidos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contenidos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-sist-op-red/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. El sistema operativo de red
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-gestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Gestión de usuarios, derechos y accesos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. La familia de protocolos TCP/IP
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. La familia de protocolos TCP/IP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="En esta página">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      En esta página
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-los-protocolos-basicos-en-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Los protocolos básicos en TCP/IP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Los protocolos básicos en TCP/IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-protocolo-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Protocolo IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-protocolo-icmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Protocolo ICMP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-protocolo-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Protocolo TCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-protocolo-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Protocolo UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-protocolo-arp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. Protocolo ARP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-el-direccionamiento-de-red-en-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. El direccionamiento de red en TCP/IP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2. El direccionamiento de red en TCP/IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-direccionamiento-basado-en-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Direccionamiento basado en clases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-mascaras-de-subred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Máscaras de subred
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-notacion-cidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Notación CIDR
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-protocolos-tcpip-de-nivel-superior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Protocolos TCP/IP de nivel superior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-utilidades-propias-de-redes-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Utilidades propias de redes TCP/IP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4. Utilidades propias de redes TCP/IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-utilidad-ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Utilidad ping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-utilidades-arp-e-ip-neigh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Utilidades arp e ip neigh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-utilidades-de-configuracion-de-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Utilidades de configuración de red
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-utilidad-netstat-y-ss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Utilidad netstat y ss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-utilidad-route-y-ip-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. Utilidad route y ip route
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-utilidades-tracert-traceroute-y-tracepath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F. Utilidades tracert, traceroute y tracepath
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-utilidades-ftp-y-tftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G. Utilidades ftp y tftp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h-utilidades-telnet-y-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H. Utilidades telnet y ssh
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-configuracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Configuración de los equipos de red
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Anexos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../anexo1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexo 1. Direccionamiento IPv4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Actividades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../act-cidr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividad. Direccionamiento IPv4 con CIDR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../act-segment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actividad. Segmentación en subredes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="En esta página">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      En esta página
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-los-protocolos-basicos-en-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Los protocolos básicos en TCP/IP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Los protocolos básicos en TCP/IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-protocolo-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Protocolo IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-protocolo-icmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Protocolo ICMP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-protocolo-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Protocolo TCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-protocolo-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Protocolo UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-protocolo-arp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. Protocolo ARP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-el-direccionamiento-de-red-en-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. El direccionamiento de red en TCP/IP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2. El direccionamiento de red en TCP/IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-direccionamiento-basado-en-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Direccionamiento basado en clases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-mascaras-de-subred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Máscaras de subred
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-notacion-cidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Notación CIDR
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-protocolos-tcpip-de-nivel-superior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Protocolos TCP/IP de nivel superior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-utilidades-propias-de-redes-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Utilidades propias de redes TCP/IP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4. Utilidades propias de redes TCP/IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-utilidad-ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. Utilidad ping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-utilidades-arp-e-ip-neigh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. Utilidades arp e ip neigh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-utilidades-de-configuracion-de-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C. Utilidades de configuración de red
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-utilidad-netstat-y-ss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D. Utilidad netstat y ss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-utilidad-route-y-ip-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E. Utilidad route y ip route
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-utilidades-tracert-traceroute-y-tracepath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F. Utilidades tracert, traceroute y tracepath
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-utilidades-ftp-y-tftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G. Utilidades ftp y tftp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h-utilidades-telnet-y-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H. Utilidades telnet y ssh
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="3-la-familia-de-protocolos-tcpip">3. La familia de protocolos TCP/IP</h1>
+<p>La familia de protocolos <strong>TCP/IP</strong> es el conjunto de protocolos que permite la comunicación entre dispositivos conectados a una red. Es la arquitectura de protocolos utilizada en Internet y también constituye la base de las comunicaciones en la mayoría de las redes locales actuales.</p>
+<p>TCP/IP no es un único protocolo, sino una familia formada por diferentes protocolos que realizan funciones complementarias. Algunos se encargan del direccionamiento y del envío de paquetes, otros proporcionan mecanismos de transporte y otros permiten ofrecer servicios de red concretos.</p>
+<p>En este apartado se estudian algunos de los protocolos y herramientas fundamentales de TCP/IP, así como el direccionamiento IP y las principales utilidades empleadas para configurar y diagnosticar una red.</p>
+<h2 id="31-los-protocolos-basicos-en-tcpip">3.1. Los protocolos básicos en TCP/IP</h2>
+<p>La arquitectura TCP/IP organiza las funciones de comunicación en diferentes niveles. Aunque su correspondencia con el modelo OSI no es exactamente la misma, permite distinguir las funciones relacionadas con el acceso a la red, el direccionamiento, el transporte y los servicios de aplicación.</p>
+<p>En una red TCP/IP intervienen numerosos protocolos. Entre los más importantes para comprender el funcionamiento básico de una red se encuentran <strong>IP, ICMP, TCP, UDP y ARP</strong>.</p>
+<h3 id="a-protocolo-ip">A. Protocolo IP</h3>
+<p><strong>IP (Internet Protocol)</strong> es el protocolo encargado del direccionamiento y del encaminamiento de los paquetes entre dispositivos. Cada interfaz de red utiliza una dirección IP que permite identificarla dentro de una red.</p>
+<p>IP proporciona un servicio de comunicación <strong>no orientado a conexión y sin garantía de entrega</strong>. Esto significa que el protocolo IP se encarga de intentar llevar los paquetes hasta su destino, pero no garantiza por sí mismo que lleguen, que lleguen en el orden correcto o que no se produzcan pérdidas.</p>
+<p>Cuando los datos procedentes de niveles superiores deben atravesar una red, IP los transporta mediante <strong>paquetes o datagramas IP</strong>. Los routers utilizan las direcciones IP de destino para decidir por qué interfaz deben reenviar estos paquetes hasta aproximarlos a su destino.</p>
+<p>Actualmente existen principalmente dos versiones del protocolo:</p>
+<ul>
+<li><strong>IPv4</strong>, que utiliza direcciones de 32 bits, como <code>192.168.1.10</code>.</li>
+<li><strong>IPv6</strong>, que utiliza direcciones de 128 bits y fue desarrollado para disponer de un espacio de direccionamiento mucho mayor que IPv4.</li>
+</ul>
+<p>En las redes locales es habitual encontrar todavía IPv4, mientras que IPv6 se utiliza cada vez más y forma parte de las tecnologías actuales de redes.</p>
+<h3 id="b-protocolo-icmp">B. Protocolo ICMP</h3>
+<p><strong>ICMP (Internet Control Message Protocol)</strong> se utiliza para transmitir mensajes de control y de diagnóstico relacionados con IP. No está destinado a transportar directamente los datos de las aplicaciones, sino a informar sobre determinadas situaciones que se producen durante las comunicaciones.</p>
+<p>Por ejemplo, ICMP permite que un dispositivo pueda informar de determinados errores relacionados con la entrega de paquetes. También se utiliza en herramientas de diagnóstico como <code>ping</code>, que envía mensajes ICMP de solicitud de eco y comprueba si recibe una respuesta.</p>
+<h3 id="c-protocolo-tcp">C. Protocolo TCP</h3>
+<p><strong>TCP (Transmission Control Protocol)</strong> es un protocolo de la capa de transporte orientado a conexión. Su función es proporcionar una comunicación fiable entre dos aplicaciones que intercambian datos a través de una red IP.</p>
+<p>TCP establece una conexión entre los extremos de la comunicación y utiliza mecanismos como la numeración de segmentos, las confirmaciones y la retransmisión de datos para controlar la entrega. De esta forma, puede detectar pérdidas y solicitar nuevamente los datos que no hayan llegado correctamente.</p>
+<p>TCP resulta adecuado para aplicaciones en las que es importante que los datos lleguen de forma fiable y ordenada. Entre sus usos se encuentran numerosas comunicaciones web, el correo electrónico y otros servicios de red.</p>
+<p>Las aplicaciones utilizan <strong>puertos</strong> para identificar los servicios con los que desean comunicarse. Una combinación de dirección IP y puerto permite identificar un extremo concreto de una comunicación de red.</p>
+<h3 id="d-protocolo-udp">D. Protocolo UDP</h3>
+<p><strong>UDP (User Datagram Protocol)</strong> es un protocolo de transporte no orientado a conexión. A diferencia de TCP, no establece una conexión previa ni proporciona mecanismos propios para garantizar que los datos lleguen a su destino, ni que lo hagan en el mismo orden en que fueron enviados.</p>
+<p>Esta simplicidad hace que UDP tenga una menor sobrecarga que TCP y pueda resultar apropiado cuando se necesita reducir la latencia o cuando la propia aplicación se encarga de controlar determinados aspectos de la comunicación.</p>
+<p>Por tanto, la diferencia fundamental puede resumirse de la siguiente manera:</p>
+<table>
+<thead>
+<tr>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orientado a conexión</td>
+<td>No orientado a conexión</td>
+</tr>
+<tr>
+<td>Proporciona entrega fiable</td>
+<td>No garantiza la entrega</td>
+</tr>
+<tr>
+<td>Mantiene el orden de los datos</td>
+<td>No garantiza el orden</td>
+</tr>
+<tr>
+<td>Tiene mayor sobrecarga</td>
+<td>Tiene menor sobrecarga</td>
+</tr>
+<tr>
+<td>Adecuado cuando la fiabilidad es prioritaria</td>
+<td>Adecuado cuando se busca rapidez o baja sobrecarga</td>
+</tr>
+</tbody>
+</table>
+<h3 id="e-protocolo-arp">E. Protocolo ARP</h3>
+<p><strong>ARP (Address Resolution Protocol)</strong> permite relacionar una dirección IPv4 con la dirección MAC correspondiente dentro de una red local. Esta relación es necesaria porque un dispositivo puede conocer la dirección IP del destino, pero necesita conocer también su dirección MAC para poder entregar una trama Ethernet dentro de la red local.</p>
+<p>Cuando un equipo necesita conocer la dirección MAC asociada a una dirección IPv4 de su red local, puede realizar una solicitud ARP. El dispositivo que utiliza esa dirección IPv4 responde indicando su dirección MAC. La relación obtenida se almacena temporalmente en una caché ARP para evitar tener que realizar la consulta en cada comunicación.</p>
+<p>ARP está asociado a IPv4. IPv6 utiliza mecanismos diferentes, integrados en <strong>ICMPv6</strong>, para realizar la resolución de direcciones en la red local.</p>
+<h2 id="32-el-direccionamiento-de-red-en-tcpip">3.2. El direccionamiento de red en TCP/IP</h2>
+<p>Para que los dispositivos puedan comunicarse mediante IP es necesario disponer de un sistema de direccionamiento. En IPv4, cada interfaz de red utiliza una dirección de 32 bits, que normalmente se representa mediante cuatro números decimales separados por puntos. Cada uno de estos números puede tener un valor entre 0 y 255.</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code>192.168.1.25
+</code></pre></div>
+<p>Una dirección IPv4 no debe interpretarse simplemente como un identificador de un equipo. Una parte de sus bits identifica la <strong>red o subred</strong>, mientras que otra parte identifica el <strong>host</strong> dentro de esa red. La máscara de subred permite determinar dónde termina la parte correspondiente a la red y dónde comienza la correspondiente al host.</p>
+<h3 id="a-direccionamiento-basado-en-clases">A. Direccionamiento basado en clases</h3>
+<p>Históricamente, las direcciones IPv4 se dividían en diferentes <strong>clases de red</strong>: A, B, C, D y E. Las clases A, B y C se utilizaban para redes de diferentes tamaños, mientras que la clase D se destinaba a multidifusión y la clase E a usos experimentales o reservados.</p>
+<p>En el direccionamiento por clases, los primeros bits de una dirección IPv4 permitían determinar a qué clase pertenecía. En las clases A, B y C, esta clasificación establecía cuántos bits se destinaban a identificar la red y cuántos al dispositivo (host). De esta manera, se asignaban bloques de direcciones de distintos tamaños según las necesidades de cada organización.</p>
+<p>Las principales características de las clases eran las siguientes:</p>
+<ul>
+<li><strong>Clase A</strong>: se diseñó para redes muy grandes, con una gran cantidad de dispositivos. Utilizaba el primer octeto para identificar la red y los tres restantes para identificar los hosts. <em>Comprende las direcciones desde <code>0.0.0.0</code> hasta <code>127.255.255.255</code></em>. <em>Su máscara tradicional era <code>255.0.0.0</code> (<code>/8</code>)</em>.</li>
+<li><strong>Clase B</strong>: se destinaba a redes de tamaño intermedio. Utilizaba los dos primeros octetos para identificar la red y los dos restantes para identificar los hosts. <em>Comprende las direcciones desde <code>128.0.0.0</code> hasta <code>191.255.255.255</code></em>. <em>Su máscara tradicional era <code>255.255.0.0</code> (<code>/16</code>)</em>.</li>
+<li><strong>Clase C</strong>: se utilizaba para redes pequeñas, con un número más limitado de dispositivos. Los tres primeros octetos identificaban la red y el último identificaba los hosts. <em>Comprende las direcciones desde <code>192.0.0.0</code> hasta <code>223.255.255.255</code></em>. <em>Su máscara tradicional era <code>255.255.255.0</code> (<code>/24</code>)</em>.</li>
+<li><strong>Clase D</strong>: se destinaba a la multidifusión (<i>multicast</i>), un mecanismo que permite enviar paquetes de datos a un grupo de dispositivos que han manifestado interés en recibirlos. En lugar de enviar una copia individual a cada destinatario, el emisor envía los datos a una dirección de multidifusión y la red se encarga de distribuirlos a los miembros del grupo. Este mecanismo resulta útil, por ejemplo, para distribuir transmisiones de vídeo o información a varios dispositivos simultáneamente. <em>Las direcciones IPv4 de clase D se encuentran en el rango <code>224.0.0.0</code> a <code>239.255.255.255</code></em>.</li>
+<li><strong>Clase E</strong>: se reservaba para usos experimentales y otros fines especiales. <em>Comprende las direcciones desde <code>240.0.0.0</code> hasta <code>255.255.255.255</code></em>, aunque existen excepciones, como 255.255.255.255, que se utiliza como dirección de difusión limitada (limited broadcast). Por tanto, no todo el rango de la clase E puede considerarse disponible para experimentación. Un ejemplo de dirección de este rango es 240.0.0.1, que no se utiliza normalmente para asignar una dirección IPv4 a un dispositivo en una red convencional.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Clase</th>
+<th>Primer octeto</th>
+<th>Rango de direcciones IPv4</th>
+<th>Máscara tradicional</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0-127</td>
+<td><code>0.0.0.0</code> - <code>127.255.255.255</code></td>
+<td><code>255.0.0.0</code> (<code>/8</code>)</td>
+<td>Redes muy grandes</td>
+</tr>
+<tr>
+<td>B</td>
+<td>128-191</td>
+<td><code>128.0.0.0</code> - <code>191.255.255.255</code></td>
+<td><code>255.255.0.0</code> (<code>/16</code>)</td>
+<td>Redes medianas</td>
+</tr>
+<tr>
+<td>C</td>
+<td>192-223</td>
+<td><code>192.0.0.0</code> - <code>223.255.255.255</code></td>
+<td><code>255.255.255.0</code> (<code>/24</code>)</td>
+<td>Redes pequeñas</td>
+</tr>
+<tr>
+<td>D</td>
+<td>224-239</td>
+<td><code>224.0.0.0</code> - <code>239.255.255.255</code></td>
+<td>No aplicable</td>
+<td>Multidifusión (multicast)</td>
+</tr>
+<tr>
+<td>E</td>
+<td>240-255</td>
+<td><code>240.0.0.0</code> - <code>255.255.255.255</code></td>
+<td>No aplicable</td>
+<td>Usos experimentales o especiales</td>
+</tr>
+</tbody>
+</table>
+<p><em>Consideraciones importantes</em>:</p>
+<ul>
+<li>
+<p>En la clase A:</p>
+<ul>
+<li>El bloque <code>0.0.0.0/8</code> (es decir, de <code>0.0.0.0</code> a <code>0.255.255.255</code>) tiene usos especiales, como representar una dirección IP no especificada. No se utiliza para asignar direcciones convencionales a dispositivos de una red.</li>
+<li>El bloque <code>127.0.0.0/8</code> (es decir, de <code>127.0.0.0</code> a <code>127.255.255.255</code>) se reserva para <strong>loopback</strong>, es decir, para que un dispositivo se comunique consigo mismo.</li>
+</ul>
+<p>Por ello, las redes convencionales de clase A utilizaban los primeros octetos del 1 al 126.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La dirección <code>127.0.0.1</code>, conocida como <code>localhost</code>, permite a un equipo comunicarse consigo mismo sin enviar los datos a través de la red física. Pertenece al rango <code>127.0.0.0/8</code>, reservado para <em>loopback</em>. Aunque <code>127.0.0.1</code> es la dirección más utilizada, cualquier dirección de ese rango está reservada para este propósito. Por ejemplo, se puede utilizar <code>http://localhost:8080</code> para acceder a un servidor web que se ejecuta en el propio equipo y escucha en el puerto 8080.</p>
+</div>
+</li>
+<li>
+<p>En la clase E, <code>255.255.255.255</code> es la dirección de difusión limitada (<i>limited broadcast</i>), por lo que no todas las direcciones de este rango se destinan a experimentación.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La difusión limitada (limited broadcast) es un mecanismo de IPv4 que permite enviar un paquete a todos los dispositivos de la red local a la que está conectado el emisor, sin que los routers lo reenvíen a otras redes.</p>
+</div>
+</li>
+</ul>
+<p>Sin embargo, <strong>el direccionamiento por clases ya no es el sistema utilizado para diseñar las redes actuales</strong>. Su estudio resulta útil para comprender la evolución del direccionamiento IPv4, pero las redes modernas utilizan principalmente direccionamiento sin clases mediante máscaras de longitud variable y notación <strong>CIDR</strong>.</p>
+<!---->
+
+<h3 id="b-mascaras-de-subred">B. Máscaras de subred</h3>
+<p>Una <strong>máscara de subred</strong> es una secuencia de 32 bits que permite determinar qué parte de una dirección IPv4 corresponde a la red y qué parte corresponde al host. Se utiliza junto con la dirección IP para determinar a qué subred pertenece un dispositivo y si otro dispositivo se encuentra en esa misma subred.</p>
+<p>En la máscara, los bits que corresponden a la red se representan mediante <code>1</code>, mientras que los bits correspondientes al host se representan mediante <code>0</code>.</p>
+<p>Por ejemplo, una máscara <code>/24</code> equivale a:</p>
+<div class="highlight"><pre><span></span><code>11111111.11111111.11111111.00000000
+</code></pre></div>
+<p>Su representación decimal es <code>255.255.255.0</code>. Esto significa que los primeros 24 bits identifican la subred y los 8 bits restantes permiten identificar los hosts dentro de ella.</p>
+<p>Si utilizamos una máscara <code>/26</code>, los primeros 26 bits identifican la subred y quedan 6 bits para los hosts:</p>
+<div class="highlight"><pre><span></span><code>11111111.11111111.11111111.11000000
+</code></pre></div>
+<p>Su representación decimal es <code>255.255.255.192</code>. Los dos primeros bits del último octeto también se utilizan para identificar la subred, por lo que se pueden crear cuatro subredes a partir de una red <code>/24</code>. Cada una dispone de 64 direcciones en total, de las cuales 62 se pueden asignar normalmente a dispositivos.</p>
+<p>La notación <code>/24</code> o <code>/26</code>, denominada <strong>longitud del prefijo</strong>, indica precisamente cuántos bits consecutivos de la máscara tienen valor <code>1</code>.</p>
+<p><strong>¿Qué es una subred?</strong></p>
+<p>Una subred es una división lógica de una red IP que permite organizar los dispositivos en diferentes grupos. Cada subred dispone de su propio rango de direcciones IPv4 y se identifica mediante una dirección de red y una máscara.</p>
+<div class="admonition example">
+<p class="admonition-title">Por ejemplo</p>
+<p>Un centro educativo dispone de una red para los ordenadores de administración, otra para los equipos de las aulas de informática y una tercera para los dispositivos del profesorado. Para organizar la red, el administrador configura tres subredes IP diferentes, cada una con su propio rango de direcciones. Aunque los equipos estén conectados a los mismos switches físicos, <strong>la comunicación entre subredes requiere un router o un switch de nivel 3</strong> que se encargue de encaminar los paquetes entre ellas.</p>
+</div>
+<p>La división en subredes permite:</p>
+<ol>
+<li>Organizar los dispositivos en grupos independientes, facilitando la administración de las direcciones IP y la configuración de la red.</li>
+<li>Separar los dominios de difusión cuando los dispositivos se distribuyen en redes locales independientes, por ejemplo, mediante VLAN. De este modo, los mensajes de difusión de una red no se propagan directamente a las demás.</li>
+<li>Reducir el tráfico innecesario y facilitar el control de las comunicaciones entre los distintos grupos de dispositivos.</li>
+</ol>
+<p>Cuando un dispositivo quiere enviar datos a otro, utiliza la dirección IP y la máscara de subred para determinar si el destinatario pertenece a su misma subred:</p>
+<ul>
+<li>Si ambos están en la misma subred, puede enviar los datos directamente al destinatario a través de la red local.</li>
+<li>Si pertenecen a subredes diferentes, envía los datos a la puerta de enlace predeterminada, que se encarga de encaminarlos hacia la red de destino.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Por ejemplo</p>
+<p>Un ordenador tiene la dirección <code>192.168.1.10</code> y la máscara <code>255.255.255.0</code> (<code>/24</code>). Su dirección de red es <code>192.168.1.0</code>, ya que los primeros tres octetos identifican la subred y el último identifica al host.</p>
+<p>En esta subred, las direcciones tienen la siguiente función:</p>
+<ul>
+<li><strong>Dirección de red</strong>: <code>192.168.1.0</code>. Identifica la subred y no se asigna normalmente a un host.</li>
+<li><strong>Direcciones de host</strong>: desde <code>192.168.1.1</code> hasta <code>192.168.1.254</code>. Pueden asignarse a dispositivos.</li>
+<li><strong>Dirección de difusión</strong>: <code>192.168.1.255</code>. Permite enviar paquetes de difusión a los dispositivos de esa subred.</li>
+</ul>
+<p>Por tanto, un ordenador con dirección <code>192.168.1.20/24</code> pertenece a la misma subred que <code>192.168.1.10/24</code>. En cambio, un ordenador con dirección <code>192.168.2.20/24</code> pertenece a otra subred, por lo que <strong>la comunicación entre ambos requiere normalmente encaminamiento</strong>.</p>
+</div>
+<p><strong>División de una red en subredes:</strong></p>
+<p>La máscara también permite dividir un bloque de direcciones en varias subredes más pequeñas. Para conseguirlo, se amplía el prefijo, utilizando como bits de red algunos de los que antes se destinaban a identificar los hosts. Cuanto más largo es el prefijo, menos bits quedan para los hosts y menor es el tamaño de cada subred.</p>
+<div class="admonition example">
+<p class="admonition-title">Por ejemplo</p>
+<p>Por ejemplo, partimos de la misma red del ejemplo anterior, <code>192.168.1.0/24</code>, que dispone de 256 direcciones en total. En una subred convencional, dos de ellas se reservan para identificar la red y la difusión, por lo que quedan 254 direcciones asignables a hosts.</p>
+<p>Si necesitamos dividirla en cuatro subredes iguales, podemos utilizar una máscara <code>/26</code>, equivalente a <code>255.255.255.192</code>:</p>
+<div class="highlight"><pre><span></span><code>11111111.11111111.11111111.11000000
+</code></pre></div>
+<p>La nueva máscara utiliza dos bits adicionales para identificar las subredes. Con dos bits se pueden representar cuatro combinaciones diferentes: 00, 01, 10 y 11. Por tanto, se obtienen cuatro subredes, cada una con 64 direcciones totales y 62 direcciones asignables a hosts.</p>
+<p>Las cuatro subredes resultantes son:</p>
+<table>
+<thead>
+<tr>
+<th>Subred</th>
+<th>Dirección de red</th>
+<th>Primer host</th>
+<th>Último host</th>
+<th>Difusión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>192.168.1.0/26</code></td>
+<td><code>192.168.1.1</code></td>
+<td><code>192.168.1.62</code></td>
+<td><code>192.168.1.63</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>192.168.1.64/26</code></td>
+<td><code>192.168.1.65</code></td>
+<td><code>192.168.1.126</code></td>
+<td><code>192.168.1.127</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>192.168.1.128/26</code></td>
+<td><code>192.168.1.129</code></td>
+<td><code>192.168.1.190</code></td>
+<td><code>192.168.1.191</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>192.168.1.192/26</code></td>
+<td><code>192.168.1.193</code></td>
+<td><code>192.168.1.254</code></td>
+<td><code>192.168.1.255</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>También podemos crear subredes de tamaños diferentes. Por ejemplo, si necesitamos una subred grande y dos más pequeñas, podemos dividir el bloque inicial de forma desigual mediante máscaras diferentes. Esta técnica se conoce como <strong>VLSM (<em>Variable Length Subnet Mask</em>)</strong>.</p>
+<h3 id="c-notacion-cidr">C. Notación CIDR</h3>
+<p>La <strong>notación CIDR</strong> (<em>Classless Inter-Domain Routing</em>) permite expresar redes IPv4 mediante un prefijo que indica su tamaño, sin depender de las antiguas clases A, B y C.</p>
+<p>Por ejemplo, la expresión <code>192.168.1.0/26</code> identifica un bloque de direcciones cuyo prefijo tiene 26 bits. Esta notación permite representar redes de diferentes tamaños con independencia de las clases tradicionales.</p>
+<p>Antes de CIDR, las máscaras predeterminadas dependían de la clase de la dirección: <code>/8</code> para la clase A, <code>/16</code> para la B y <code>/24</code> para la C. CIDR eliminó esta limitación y permitió asignar bloques de direcciones ajustados a las necesidades de cada red, aprovechando mejor el espacio de direccionamiento IPv4.</p>
+<p>Actualmente, la notación CIDR se utiliza habitualmente para expresar redes, bloques de direcciones y rutas de encaminamiento.</p>
+<div class="admonition warning">
+<p class="admonition-title">Atención</p>
+<p>Para el cálculo de las direcciones de red y de difusión mediante la máscara de subred, lee el <a href="../anexo1/">Anexo 1</a></p>
+</div>
+<h2 id="33-protocolos-tcpip-de-nivel-superior">3.3. Protocolos TCP/IP de nivel superior</h2>
+<p>Los protocolos de las capas superiores proporcionan servicios que utilizan las aplicaciones para comunicarse a través de la red. Algunos de los protocolos más conocidos de la familia TCP/IP son los siguientes:</p>
+<ul>
+<li><strong>FTP (File Transfer Protocol)</strong> permite transferir archivos entre un cliente y un servidor. Es un protocolo tradicional de transferencia de archivos y, debido a que no cifra por sí mismo la comunicación, actualmente se prefieren alternativas seguras cuando se necesita transferir información sensible.</li>
+</ul>
+<!-- Actividad FTP en Packet Tracer (está en el temario) -->
+
+<ul>
+<li>
+<p><strong>SNMP (Simple Network Management Protocol)</strong> se utiliza para la supervisión y gestión de dispositivos de red. Permite obtener información sobre el estado y funcionamiento de determinados equipos y servicios.</p>
+</li>
+<li>
+<p><strong>HTTP (Hypertext Transfer Protocol)</strong> es uno de los principales protocolos utilizados para la transferencia de recursos en la web. La versión protegida mediante cifrado, <strong>HTTPS</strong>, utiliza HTTP sobre una conexión segura mediante TLS.</p>
+</li>
+<li>
+<p><strong>RPC (Remote Procedure Call)</strong> permite que una aplicación solicite la ejecución de determinadas operaciones en otro sistema, facilitando la comunicación entre aplicaciones distribuidas.</p>
+</li>
+<li>
+<p><strong>SMTP (Simple Mail Transfer Protocol)</strong> se utiliza principalmente para el envío y la transferencia de correo electrónico entre clientes y servidores y entre servidores de correo.</p>
+</li>
+<li>
+<p><strong>POP3 (Post Office Protocol version 3)</strong> permite descargar mensajes de correo electrónico desde un servidor a un cliente. Está pensado principalmente para la recepción y descarga de los mensajes.</p>
+</li>
+<li>
+<p><strong>IMAP (Internet Message Access Protocol)</strong> permite acceder al correo almacenado en un servidor y gestionar los mensajes manteniéndolos en dicho servidor. Esto facilita el acceso al mismo buzón desde diferentes dispositivos.</p>
+</li>
+</ul>
+<p>Estos protocolos muestran que TCP/IP no se limita a transportar paquetes entre equipos. Sobre la infraestructura proporcionada por IP y los protocolos de transporte se construyen numerosos servicios que utilizan directamente las aplicaciones.</p>
+<h2 id="34-utilidades-propias-de-redes-tcpip">3.4. Utilidades propias de redes TCP/IP</h2>
+<p>Los sistemas operativos incorporan diferentes herramientas que permiten consultar la configuración de red, comprobar la conectividad y diagnosticar problemas. Estas utilidades son especialmente importantes para el administrador o técnico de redes, ya que permiten obtener información sobre el funcionamiento de un equipo sin necesidad de utilizar herramientas gráficas específicas.</p>
+<h3 id="a-utilidad-ping">A. Utilidad <code>ping</code></h3>
+<p><code>ping</code> permite comprobar la conectividad IP con otro dispositivo mediante mensajes ICMP. Envía solicitudes de eco y muestra las respuestas recibidas, así como el tiempo de ida y vuelta.</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code>ping 192.168.1.1
+</code></pre></div>
+<p>Si el destino responde, <code>ping</code> permite comprobar que existe conectividad IP entre ambos dispositivos. También puede utilizarse con nombres de host para comprobar si la resolución de nombres funciona correctamente. Microsoft mantiene esta utilidad en las versiones actuales de Windows y la documenta expresamente como una herramienta principal para diagnosticar conectividad y resolución de nombres.</p>
+<h3 id="b-utilidades-arp-e-ip-neigh">B. Utilidades <code>arp</code> e <code>ip neigh</code></h3>
+<p>En IPv4, <code>arp</code> permite consultar y modificar la caché ARP, donde se almacenan asociaciones entre direcciones IPv4 y direcciones físicas de la red local. Por ejemplo, en Windows:</p>
+<div class="highlight"><pre><span></span><code>arp -a
+</code></pre></div>
+<p>muestra las entradas actuales de la caché ARP.</p>
+<p>En sistemas GNU/Linux modernos, la utilidad <code>ip</code> proporciona mecanismos para consultar esta información, por ejemplo mediante <code>ip neigh</code>. Por ello, aunque <code>arp</code> sigue siendo útil para comprender y diagnosticar IPv4, conviene conocer también las herramientas actuales de administración de red.</p>
+<h3 id="c-utilidades-de-configuracion-de-red">C. Utilidades de configuración de red</h3>
+<p>En Windows, <code>ipconfig</code> permite consultar la configuración TCP/IP de los adaptadores de red y realizar determinadas operaciones relacionadas con DHCP y DNS. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code>ipconfig
+ipconfig /all
+</code></pre></div>
+<p>La opción <code>/all</code> proporciona información más detallada sobre los adaptadores, incluyendo direcciones IP, máscara de subred y puerta de enlace predeterminada.</p>
+<p>En GNU/Linux, la herramienta moderna para consultar y configurar interfaces, direcciones y otros parámetros de red es <code>ip</code>. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code>ip address
+</code></pre></div>
+<p>permite consultar las direcciones configuradas en las interfaces de red.</p>
+<p>Las herramientas antiguas como <code>ifconfig</code> e <code>iwconfig</code> todavía pueden encontrarse en algunos sistemas o materiales didácticos, pero no deben presentarse como las herramientas principales de administración de red actuales.</p>
+<h3 id="d-utilidad-netstat-y-ss">D. Utilidad <code>netstat</code> y <code>ss</code></h3>
+<p><code>netstat</code> permite consultar información sobre conexiones de red, puertos en escucha, estadísticas y otros datos relacionados con TCP/IP. Por ejemplo, puede utilizarse para comprobar qué conexiones TCP están activas o qué puertos están siendo utilizados.</p>
+<p>En sistemas actuales, especialmente en GNU/Linux, <code>ss</code> es una herramienta moderna que proporciona información equivalente y más completa sobre sockets y conexiones de red.</p>
+<p>En Windows, <code>netstat</code> continúa estando disponible y permite consultar conexiones TCP activas y puertos en escucha.</p>
+<h3 id="e-utilidad-route-y-ip-route">E. Utilidad <code>route</code> y <code>ip route</code></h3>
+<p>La utilidad <code>route</code> permite consultar y modificar la tabla de enrutamiento IP del equipo. Esta tabla determina qué camino debe utilizar el sistema para enviar los paquetes hacia las diferentes redes.</p>
+<p>En Windows, por ejemplo:</p>
+<div class="highlight"><pre><span></span><code>route print
+</code></pre></div>
+<p>permite consultar la tabla de rutas. El comando <code>route</code> continúa disponible en las versiones actuales de Windows.</p>
+<p>En GNU/Linux, la herramienta habitual es:</p>
+<div class="highlight"><pre><span></span><code>ip route
+</code></pre></div>
+<p>La consulta de la tabla de rutas resulta especialmente útil cuando un equipo puede comunicarse con algunos dispositivos de la red, pero no puede alcanzar otras redes.</p>
+<h3 id="f-utilidades-tracert-traceroute-y-tracepath">F. Utilidades <code>tracert</code>, <code>traceroute</code> y <code>tracepath</code></h3>
+<p>Estas herramientas permiten conocer los saltos que realiza un paquete desde el equipo de origen hasta un destino.</p>
+<p>En Windows se utiliza:</p>
+<div class="highlight"><pre><span></span><code>tracert destino
+</code></pre></div>
+<p>mientras que en GNU/Linux pueden utilizarse herramientas como:</p>
+<div class="highlight"><pre><span></span><code>traceroute destino
+</code></pre></div>
+<p>o:</p>
+<div class="highlight"><pre><span></span><code>tracepath destino
+</code></pre></div>
+<p><code>tracert</code> utiliza valores crecientes del campo TTL para identificar los dispositivos intermedios de la ruta y mostrar los tiempos de respuesta correspondientes.</p>
+<p>Estas herramientas son especialmente útiles para localizar en qué punto de una ruta puede estar produciéndose un problema de conectividad o un aumento de la latencia.</p>
+<h3 id="g-utilidades-ftp-y-tftp">G. Utilidades <code>ftp</code> y <code>tftp</code></h3>
+<p><code>ftp</code> permite realizar transferencias de archivos mediante el protocolo FTP. El modelo de funcionamiento incluye un cliente y un servidor FTP.</p>
+<p><code>TFTP (Trivial File Transfer Protocol)</code> es una versión mucho más sencilla de este mecanismo y utiliza UDP. Se ha empleado tradicionalmente en determinados escenarios de red, como algunas operaciones de configuración o arranque de dispositivos.</p>
+<p>Aunque estos protocolos siguen existiendo y pueden encontrarse en determinados entornos, <strong>FTP y especialmente TFTP no deben confundirse con las alternativas modernas y seguras para la transferencia de archivos</strong>. FTP no cifra por defecto las credenciales ni los datos que transmite.</p>
+<h3 id="h-utilidades-telnet-y-ssh">H. Utilidades <code>telnet</code> y <code>ssh</code></h3>
+<p><code>telnet</code> permite establecer una conexión remota mediante una interfaz de terminal. Sin embargo, sus comunicaciones no están cifradas, por lo que no debe utilizarse para administrar sistemas a través de redes no confiables.</p>
+<p>La alternativa habitual para la administración remota segura es <strong>SSH (Secure Shell)</strong>. SSH proporciona una conexión cifrada y permite acceder remotamente a un sistema mediante una terminal, además de ofrecer otros mecanismos de administración y transferencia segura.</p>
+<p>Por este motivo, al estudiar las conexiones remotas es importante conocer <code>telnet</code> como tecnología histórica y de diagnóstico en determinados entornos, pero utilizar <strong>SSH como referencia actual para la administración remota segura</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "content.code.annotate", "navigation.tracking", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../js/toc-toggle.js"></script>
+      
+    
+  </body>
+</html>

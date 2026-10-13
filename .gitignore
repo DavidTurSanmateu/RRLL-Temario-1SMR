@@ -3,5 +3,7 @@ __pycache__/
 *.pyc
 .DS_Store
 md/
+z_serve.bat
+z_build.bat
 mkdocs.yml
 .vscode
