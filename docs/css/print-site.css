@@ -70,6 +70,13 @@ Print site table of contents styling
 
 @media print {    
 
+    @page {
+        margin-top: 0mm;
+        margin-bottom: 15mm;
+        margin-left: 0mm;
+        margin-right: 0mm;
+    }
+
     /* included bookmarks on h1 and h2
     Doesn't work, but included In case Chrome gets support 
     for these experimental CSS features that define PDF bookmarks */
@@ -85,6 +92,12 @@ Print site table of contents styling
         -ah-bookmark-level: 2;
         -ro-pdf-bookmark-level: 2;
     } */
+
+
+    header,
+    footer {
+        display: none !important;
+    }
 
     /* Be able to not print certain elements */
     .print-site-plugin-ignore { display: none; }
@@ -131,6 +144,7 @@ Print site table of contents styling
         margin-bottom: -100px;
     }
 
+    
     #print-site-page footer { display : none; }
     
     #print-site-cover-page {
@@ -138,6 +152,7 @@ Print site table of contents styling
         width:100%; 
         text-align: center;
     }
+    
     #print-site-cover-page h1 {
         font-size: 300%;
     }

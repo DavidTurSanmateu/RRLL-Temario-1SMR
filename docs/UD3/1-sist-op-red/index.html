@@ -1947,17 +1947,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#d-sistemas-y-tecnologias-heredadas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        D. Sistemas y tecnologías heredadas
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2085,7 +2074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-configuracion.md" class="md-nav__link">
+      <a href="../4-configuracion/" class="md-nav__link">
         
   
   
@@ -2388,17 +2377,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#d-sistemas-y-tecnologias-heredadas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        D. Sistemas y tecnologías heredadas
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2472,18 +2450,32 @@
 
 
 <h1 id="1-el-sistema-operativo-de-red">1. El sistema operativo de red</h1>
-<p>El sistema operativo es el software fundamental que permite utilizar los recursos de un equipo, tanto de hardware como de software. Cuando el equipo está conectado a una red, el sistema operativo también proporciona las funciones necesarias para establecer comunicaciones con otros dispositivos y utilizar recursos y servicios de red.</p>
-<p>Entre sus funciones relacionadas con la red se encuentran la <strong>gestión de las interfaces de red</strong>, la <strong>configuración de los parámetros de comunicación</strong>, la <strong>implementación de los protocolos de red</strong>, el <strong>acceso a recursos compartidos</strong> y la <strong>ejecución de servicios de red</strong>.</p>
-<p>En una red pueden coexistir equipos con diferentes sistemas operativos. No es necesario que todos utilicen el mismo sistema operativo para poder comunicarse. La interoperabilidad se consigue principalmente mediante protocolos y estándares de red comunes, especialmente los pertenecientes a la familia TCP/IP.</p>
+<p>El <strong>sistema operativo</strong> es el software fundamental que gestiona los recursos de hardware de un equipo y proporciona los servicios necesarios para ejecutar aplicaciones. Además, los sistemas operativos actuales incorporan funciones de comunicación en red que permiten intercambiar información con otros dispositivos y acceder a recursos y servicios compartidos.</p>
+<p>Un <strong>sistema operativo de red</strong> está orientado a facilitar la administración de los equipos conectados y la prestación de servicios a otros dispositivos. Entre sus funciones relacionadas con la red pueden encontrarse la <strong>gestión de las interfaces de red</strong>, la <strong>configuración de los parámetros de comunicación</strong>, la <strong>implementación de los protocolos de red</strong>, el <strong>acceso a recursos compartidos</strong> y la <strong>ejecución de servicios de red</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Atención</p>
+<ul>
+<li>
+<p>Un <strong>sistema operativo de propósito general</strong> gestiona los recursos de un equipo, como el procesador, la memoria RAM, el almacenamiento y los periféricos. Permite ejecutar aplicaciones y proporciona una interfaz para que el usuario interactúe con el ordenador.</p>
+</li>
+<li>
+<p>Un <strong>sistema operativo de red</strong> está orientado a gestionar y facilitar el uso compartido de recursos entre varios equipos conectados a una red. Puede proporcionar servicios como la autenticación centralizada de usuarios, el acceso a carpetas compartidas, la administración de permisos y la gestión de recursos de red.</p>
+</li>
+</ul>
+<p>Por ejemplo, Windows 11 es un sistema operativo de escritorio que permite utilizar un ordenador y conectarlo a una red. Windows Server, por su parte, es un sistema operativo orientado a proporcionar servicios a otros equipos, como la autenticación mediante Active Directory o el acceso a carpetas compartidas.</p>
+</div>
+<p>En una red pueden coexistir equipos con diferentes sistemas operativos. No es necesario que todos utilicen el mismo sistema operativo para poder comunicarse. La <strong>interoperabilidad</strong> se consigue principalmente mediante protocolos y estándares de red comunes, especialmente los pertenecientes a la familia TCP/IP.</p>
 <h2 id="11-sistemas-operativos-utilizados-en-redes">1.1. Sistemas operativos utilizados en redes</h2>
-<p>Los sistemas operativos utilizados en redes pueden encontrarse tanto en equipos cliente como en servidores. La diferencia entre un sistema cliente y un sistema servidor no depende únicamente del sistema operativo, sino también de las funciones y servicios que se ejecutan en el equipo.</p>
+<p>Los sistemas operativos utilizados en una red pueden desempeñar distintas funciones según el equipo en el que se ejecuten y los servicios que proporcionen.</p>
+<p>Los equipos <strong>cliente</strong> utilizan principalmente sistemas operativos de propósito general, diseñados para ejecutar aplicaciones y facilitar la interacción con el usuario. Los <strong>servidores</strong>, en cambio, proporcionan servicios y recursos a otros equipos de la red, como el acceso a archivos o la gestión de usuarios y grupos.</p>
+<p>Esta distinción no depende exclusivamente del sistema operativo: un equipo con un sistema operativo de propósito general también puede actuar como servidor. Sin embargo, existen sistemas operativos diseñados específicamente para facilitar la administración y la prestación de servicios en entornos de servidores.</p>
 <p>Actualmente, los sistemas más relevantes para un técnico de sistemas microinformáticos y redes son Microsoft Windows y GNU/Linux.</p>
 <h3 id="a-microsoft-windows">A. Microsoft Windows</h3>
 <p>Microsoft desarrolla sistemas operativos Windows destinados a equipos cliente y servidores.</p>
-<p>En los equipos cliente se utilizan actualmente versiones como Windows 11, mientras que Windows Server está orientado a proporcionar servicios de red y administrar recursos en entornos de servidores.</p>
+<p>En los equipos cliente se utilizan versiones como Windows 11, que permiten conectarse a la red, acceder a recursos compartidos y proporcionar determinados servicios a otros dispositivos. Para los servidores, Microsoft ofrece Windows Server, diseñado para proporcionar servicios de red y administrar recursos de forma centralizada.</p>
 <p><img alt="Windows" src="../img/windows.png" /></p>
 <p>Windows incorpora de forma nativa la familia de protocolos TCP/IP y permite configurar y administrar diferentes parámetros de red.</p>
-<p>En un entorno Windows pueden utilizarse servicios como:</p>
+<p>En un entorno Windows Server pueden utilizarse servicios como:</p>
 <ul>
 <li><strong>IIS (Internet Information Services)</strong>, para alojar sitios y aplicaciones web mediante HTTP y HTTPS.</li>
 <li><strong>DHCP</strong>, para proporcionar automáticamente parámetros de configuración IP.</li>
@@ -2501,26 +2493,19 @@
 <li><strong>Servidores DHCP:</strong> asignan automáticamente a los dispositivos de la red los parámetros necesarios para comunicarse, como la dirección IP, la máscara de subred, la puerta de enlace y los servidores DNS.</li>
 <li><strong>Servidores SSH:</strong> permiten administrar equipos GNU/Linux de forma remota mediante una conexión cifrada. SSH se utiliza habitualmente para realizar tareas de administración sin necesidad de acceder físicamente al servidor.</li>
 <li><strong>Servicios de compartición de archivos:</strong> permiten almacenar y compartir archivos y directorios entre diferentes equipos de una red. En GNU/Linux pueden utilizarse protocolos y servicios como <strong>NFS</strong> para compartir archivos entre sistemas Unix/Linux y <strong>Samba</strong> para facilitar la compartición con equipos Windows.</li>
-<li><strong>Servicios de integración con redes Windows:</strong> permiten que los equipos GNU/Linux puedan integrarse en redes basadas en Windows, facilitando, por ejemplo, el acceso a recursos compartidos o la autenticación mediante servicios de directorio como <strong>Active Directory</strong>.</li>
+<li><strong>Servicios de integración con redes Windows:</strong> permiten que los equipos GNU/Linux puedan integrarse en redes basadas en Windows, facilitando, por ejemplo, el acceso a recursos compartidos o la autenticación mediante servicios de directorio como <strong>Active Directory</strong>. En redes GNU/Linux, la gestión de usuarios y recursos compartidos se puede hacer con <strong>Samba 4</strong>.</li>
 </ul>
-<p>La configuración de red depende de la distribución y de los componentes utilizados. En distribuciones actuales pueden emplearse herramientas como NetworkManager, systemd-networkd y, en Ubuntu, Netplan. Netplan proporciona una forma de definir la configuración de red y puede trabajar con NetworkManager o systemd-networkd</p>
+<p>La configuración de red depende de la distribución y de los componentes utilizados. En distribuciones actuales pueden emplearse herramientas como NetworkManager, systemd-networkd y, en Ubuntu, Netplan. Netplan proporciona una forma de definir la configuración de red y puede trabajar con NetworkManager o systemd-networkd.</p>
+<ul>
+<li><strong>NetworkManager</strong>: gestiona las conexiones de red, como Ethernet y Wi-Fi. Permite configurar direcciones IP, servidores DNS y otros parámetros. Se utiliza habitualmente en equipos de escritorio.</li>
+<li><strong>systemd-networkd</strong>: es un servicio que configura y gestiona interfaces de red. Se utiliza con frecuencia en servidores y sistemas que necesitan una configuración más sencilla y estática.</li>
+<li><strong>Netplan</strong>: es una herramienta que permite definir la configuración de red mediante archivos YAML. No gestiona directamente las interfaces: genera la configuración que utilizará NetworkManager o systemd-networkd, según el sistema.</li>
+</ul>
 <h3 id="c-otros-sistemas-operativos">C. Otros sistemas operativos</h3>
-<p>También existen otros sistemas operativos capaces de participar en redes TCP/IP, como macOS y diferentes sistemas basados en UNIX y BSD.</p>
+<p>También existen otros sistemas operativos capaces de participar en redes TCP/IP, como macOS y diferentes sistemas basados en UNIX.</p>
 <p>macOS está basado en tecnologías UNIX y proporciona soporte para las comunicaciones de red mediante TCP/IP.</p>
 <p>Estos sistemas pueden encontrarse en redes profesionales y domésticas, pero tienen menor importancia para los objetivos prácticos de este módulo que Windows y GNU/Linux.</p>
 <p>Por este motivo, basta con conocer su existencia y comprender que pueden comunicarse con otros sistemas mediante protocolos y estándares de red comunes.</p>
-<h3 id="d-sistemas-y-tecnologias-heredadas">D. Sistemas y tecnologías heredadas</h3>
-<p>Algunas tecnologías tuvieron una gran importancia en las redes locales de décadas anteriores, pero actualmente están obsoletas o tienen principalmente interés histórico.</p>
-<p>Entre ellas se encuentran:</p>
-<ul>
-<li>Novell NetWare.</li>
-<li>IPX/SPX.</li>
-<li>NetBEUI.</li>
-<li>AppleTalk.</li>
-</ul>
-<p>Novell NetWare fue un sistema operativo de red utilizado ampliamente en el pasado, pero actualmente no forma parte de las tecnologías habituales de una red local moderna.</p>
-<p>Del mismo modo, IPX/SPX y NetBEUI fueron utilizados por diferentes sistemas y aplicaciones de redes antiguas, pero TCP/IP se ha convertido en la base de las redes actuales.</p>
-<p>Estas tecnologías pueden aparecer en documentación antigua o en equipos heredados, por lo que es útil reconocer sus nombres, pero no es necesario estudiar su configuración para trabajar con redes locales actuales.</p>
 <h2 id="12-componentes-del-sistema-operativo-relacionados-con-la-red">1.2. Componentes del sistema operativo relacionados con la red</h2>
 <p>Para que un sistema operativo pueda comunicarse mediante una red necesita diferentes componentes de software. Entre los más importantes se encuentran los controladores de las interfaces de red, la pila de protocolos y los servicios de red.</p>
 <h3 id="a-controlador-de-la-interfaz-de-red">A. Controlador de la interfaz de red</h3>

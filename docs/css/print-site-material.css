@@ -20,19 +20,3 @@ https://github.com/squidfunk/mkdocs-material */
     }
 
 }
-
-@page {
-
-    size: A4 portrait;
-    margin: 4em 1.5em 4em 1.5em;
-    padding: 0em 0em 0em 0em;
-    counter-increment: page;
-
-    @bottom-center {
-        content: string(chapter);
-    }
-    @bottom-right {
-        content: 'Page ' counter(page);
-    }
-
-}
