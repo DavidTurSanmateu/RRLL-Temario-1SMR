@@ -120,6 +120,8 @@
     
       <link rel="stylesheet" href="../../css/print-site.css">
     
+      <link rel="stylesheet" href="../../css/pele-style.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1963,6 +1965,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#24-seguridad-informatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Seguridad informática
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2298,6 +2311,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#24-seguridad-informatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. Seguridad informática
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2350,8 +2374,15 @@
 <li><strong>Modificación o eliminación</strong>, cuando el sistema permite controlar estas operaciones.</li>
 </ul>
 <p>Por tanto, <strong>tener acceso a un recurso no implica disponer automáticamente de todos los permisos sobre su contenido</strong>. La configuración de permisos permite aplicar un control más preciso.</p>
-<p>La administración de permisos debe realizarse siguiendo el principio de <strong>mínimo privilegio</strong>: cada usuario debería disponer únicamente de los permisos necesarios para realizar sus funciones. De esta forma se reducen los accesos innecesarios y las consecuencias que podría tener un uso incorrecto de una cuenta. Es decir, si un usuario solo necesita consultar unos documentos, no es necesario concederle también permisos para modificarlos o eliminarlos.</p>
-<p>Los sistemas operativos permiten establecer estos permisos de diferentes maneras. En GNU/Linux, por ejemplo, los archivos y directorios tienen asociado un propietario y un grupo, y se pueden establecer permisos de lectura, escritura y ejecución. En Windows, los sistemas de archivos y los recursos compartidos disponen de sus propios mecanismos de control de acceso.</p>
+<p>La administración de permisos debe realizarse siguiendo el <strong>principio de mínimo privilegio</strong>: cada usuario debería disponer únicamente de los permisos necesarios para realizar sus funciones. De esta forma se reducen los accesos innecesarios y las consecuencias que podría tener un uso incorrecto de una cuenta. Es decir, si un usuario solo necesita consultar unos documentos, no es necesario concederle también permisos para modificarlos o eliminarlos.</p>
+<p>Además de establecer los permisos sobre los recursos, <strong>es necesario determinar qué tipo de cuenta utiliza cada usuario y qué privilegios tiene dentro del sistema</strong>. No todas las cuentas deben disponer de las mismas capacidades, ya que algunas operaciones, como instalar programas, modificar la configuración del sistema o gestionar otros usuarios, requieren permisos especiales.</p>
+<p>Según su finalidad, pueden distinguirse los siguientes tipos de cuentas:</p>
+<ul>
+<li><strong>Cuentas estándar</strong>: permiten realizar tareas habituales sin modificar aspectos críticos del sistema.</li>
+<li><strong>Cuentas administrativas</strong>: disponen de privilegios elevados para instalar programas, modificar la configuración y gestionar usuarios y permisos.</li>
+<li><strong>Cuentas de servicio</strong>: son utilizadas por aplicaciones y servicios del sistema para realizar tareas específicas.</li>
+<li><strong>Cuentas de invitado o temporales</strong>: proporcionan acceso limitado y, generalmente, durante un periodo determinado.</li>
+</ul>
 <h2 id="23-administracion-y-control-de-los-accesos">2.3. Administración y control de los accesos</h2>
 <p>La gestión de usuarios y permisos no termina cuando se crean las cuentas y se asignan los permisos. En una red es necesario mantener esta configuración a medida que cambian las necesidades de los usuarios y de la organización.</p>
 <p>Cuando un usuario cambia de función, puede ser necesario modificar su pertenencia a determinados grupos o sus permisos. Del mismo modo, cuando una persona deja de necesitar acceso a un recurso, sus permisos deben revisarse o retirarse.</p>
@@ -2368,6 +2399,17 @@
 </div>
 <p>Por ejemplo, si un servicio deja de funcionar, los registros del sistema pueden proporcionar información sobre el error que se ha producido. Del mismo modo, los registros relacionados con la autenticación y el acceso pueden resultar útiles para investigar problemas de permisos o accesos no autorizados.</p>
 <p>La gestión de usuarios, permisos y registros constituye, por tanto, una parte fundamental de la administración de una red. No se trata únicamente de permitir o impedir el acceso a determinados recursos, sino de mantener un control organizado sobre quién puede utilizarlos, qué puede hacer con ellos y qué acontecimientos se producen en el sistema.</p>
+<h2 id="24-seguridad-informatica">2.4. Seguridad informática</h2>
+<p>La identificación, la autenticación y la autorización son tres conceptos fundamentales de la seguridad informática que, aunque están estrechamente relacionados, cumplen funciones diferentes. Su objetivo es controlar el acceso a los sistemas, proteger la información y garantizar que cada usuario pueda realizar únicamente las acciones que tiene permitidas.</p>
+<ul>
+<li><strong>Identificación</strong>: el usuario indica quién es mediante un nombre de usuario, una dirección de correo electrónico u otro identificador.</li>
+<li><strong>Autenticación</strong>: el sistema verifica la identidad del usuario mediante una contraseña, una llave de seguridad, un certificado o un dato biométrico.</li>
+<li><strong>Autorización</strong>: el sistema determina a qué recursos puede acceder el usuario y qué operaciones puede realizar, según los permisos que tenga asignados.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Por ejemplo</p>
+<p>Al acceder a una plataforma educativa (Aules, por ejemplo), un estudiante introduce su nombre de usuario (identificación), proporciona su contraseña para verificar su identidad (autenticación) y, una vez dentro, puede gestionar su propio trabajo dentro de la plataforma, pero no el de otros estudiantes (autorización).</p>
+</div>
 
 
 
@@ -2422,7 +2464,11 @@
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
+        <script src="https://cdn.jsdelivr.net/npm/pele@1/dist/pele.global.js"></script>
+      
         <script src="../../js/toc-toggle.js"></script>
+      
+        <script src="../../js/pele-diagrams.js"></script>
       
     
   </body>

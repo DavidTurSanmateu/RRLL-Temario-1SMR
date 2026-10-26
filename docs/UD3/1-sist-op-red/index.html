@@ -120,6 +120,8 @@
     
       <link rel="stylesheet" href="../../css/print-site.css">
     
+      <link rel="stylesheet" href="../../css/pele-style.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2509,7 +2511,7 @@
 <h2 id="12-componentes-del-sistema-operativo-relacionados-con-la-red">1.2. Componentes del sistema operativo relacionados con la red</h2>
 <p>Para que un sistema operativo pueda comunicarse mediante una red necesita diferentes componentes de software. Entre los más importantes se encuentran los controladores de las interfaces de red, la pila de protocolos y los servicios de red.</p>
 <h3 id="a-controlador-de-la-interfaz-de-red">A. Controlador de la interfaz de red</h3>
-<p>El controlador o <em>driver</em> es el software que permite al sistema operativo comunicarse con una determinada interfaz de red.</p>
+<p>El <strong>controlador o <em>driver</em></strong> es el software que permite al sistema operativo comunicarse con una determinada interfaz de red.</p>
 <p>Una interfaz de red puede ser, por ejemplo:</p>
 <ul>
 <li>Una tarjeta de red Ethernet.</li>
@@ -2520,19 +2522,60 @@
 <p>Si el controlador no está instalado, es incorrecto o presenta algún problema, el sistema operativo puede no reconocer la interfaz de red o esta puede funcionar de forma incorrecta. Por ejemplo, pueden no estar disponibles determinadas funciones del adaptador o puede ser imposible establecer una conexión de red.</p>
 <p>Por tanto, los controladores forman parte de los componentes básicos necesarios para utilizar una interfaz de red. Su instalación y actualización deben realizarse de acuerdo con las características del sistema operativo y del hardware.</p>
 <h3 id="b-pila-de-protocolos-de-red">B. Pila de protocolos de red</h3>
-<p>La pila de protocolos es el conjunto de componentes software que permite al sistema operativo utilizar los diferentes protocolos de comunicación.</p>
-<p>En una red actual, la pila TCP/IP permite utilizar protocolos de diferentes niveles, como:</p>
+<p>La <strong>pila de protocolos TCP/IP</strong> es un conjunto de protocolos de red organizados en capas que establece cómo se transmiten los datos a través de Internet. Habitualmente, se describe mediante cuatro capas: la capa de aplicación, la capa de transporte (TCP/UDP), la capa de Internet (IP, con ICMP para la información de control y errores) y la capa de enlace/física, encargada de transmitir los datos a través de los medios de red.</p>
 <ul>
-<li><strong>Acceso a la red</strong>: tecnologías y protocolos como Ethernet y Wi-Fi, utilizados para la comunicación a través de redes locales cableadas e inalámbricas.</li>
-<li><strong>Internet</strong>: IPv4 e IPv6, utilizados para el direccionamiento y el encaminamiento de los paquetes, e ICMP e ICMPv6, utilizados para mensajes de control, información sobre errores y tareas de diagnóstico.</li>
-<li><strong>Transporte</strong>: TCP y UDP, utilizados para la comunicación entre aplicaciones.</li>
 <li><strong>Aplicación</strong>: protocolos como DNS, DHCP, HTTP, HTTPS y SSH, que proporcionan diferentes funciones de red a las aplicaciones.</li>
+<li><strong>Transporte</strong>: TCP y UDP, utilizados para la comunicación entre aplicaciones.</li>
+<li><strong>Internet</strong>: IPv4 e IPv6, utilizados para el direccionamiento y el encaminamiento de los paquetes, e ICMP e ICMPv6, utilizados para mensajes de control, información sobre errores y tareas de diagnóstico.</li>
+<li><strong>Acceso a la red</strong>: tecnologías como Ethernet y Wi-Fi, utilizadas para la comunicación a través de redes locales cableadas e inalámbricas.</li>
 </ul>
-<p>Otros protocolos de aplicación, como SMB, también pueden funcionar sobre TCP/IP y utilizarse para compartir archivos, carpetas, impresoras y otros recursos de red.</p>
+<div class="admonition danger">
+<p class="admonition-title">Importante</p>
+<p>El modelo OSI divide la comunicación en siete capas, mientras que <strong>el modelo TCP/IP clásico utiliza cuatro</strong>. Por ello, <strong>varias capas del modelo OSI se agrupan en una sola capa TCP/IP</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Modelo OSI (7 capas)</th>
+<th>Modelo TCP/IP (4 capas)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7. Aplicación</td>
+<td>Aplicación</td>
+</tr>
+<tr>
+<td>6. Presentación</td>
+<td>Aplicación</td>
+</tr>
+<tr>
+<td>5. Sesión</td>
+<td>Aplicación</td>
+</tr>
+<tr>
+<td>4. Transporte</td>
+<td>Transporte</td>
+</tr>
+<tr>
+<td>3. Red</td>
+<td>Internet</td>
+</tr>
+<tr>
+<td>2. Enlace de datos</td>
+<td>Acceso a la red</td>
+</tr>
+<tr>
+<td>1. Física</td>
+<td>Acceso a la red</td>
+</tr>
+</tbody>
+</table>
+<p>Esta equivalencia es orientativa: no existe una correspondencia exacta entre todas las funciones de ambos modelos, ya que TCP/IP organiza los protocolos según su propia arquitectura. Para este curso, estudiaremos esta equivalencia.</p>
+</div>
 <p>Estos protocolos trabajan conjuntamente. Por ejemplo, cuando un navegador solicita una página web mediante HTTPS, los datos se transmiten utilizando los protocolos de transporte y de red necesarios para llegar desde el equipo cliente hasta el servidor.</p>
 <p>La pila de protocolos permite, por tanto, que una aplicación pueda comunicarse con otra aplicación situada en el mismo equipo, en otro equipo de la red local o en una red remota.</p>
 <h3 id="c-servicios-de-red">C. Servicios de red</h3>
-<p>Un servicio de red es un programa o proceso que proporciona una determinada función y puede atender solicitudes procedentes de otros equipos.</p>
+<p>Un <strong>servicio de red</strong> es un programa o proceso que proporciona una determinada función y puede atender solicitudes procedentes de otros equipos.</p>
 <div class="admonition example">
 <p class="admonition-title">Ejemplo DHCP</p>
 <p>Un equipo puede ejecutar un servidor DHCP que atienda las solicitudes de los dispositivos de la red y les proporcione automáticamente los parámetros necesarios para su configuración.</p>
@@ -2542,7 +2585,7 @@
 <p>Un equipo con Windows Server puede ejecutar un servidor web mediante IIS. Cuando un cliente solicita una página web, el servidor recibe la petición, procesa la solicitud y envía los datos correspondientes al equipo cliente.</p>
 </div>
 <p>Los servicios de red suelen ejecutarse en segundo plano y permanecen disponibles para atender las solicitudes de los clientes. De esta forma, un servidor puede proporcionar una función de red de forma continua sin que un usuario tenga que ejecutar manualmente una aplicación cada vez que se recibe una solicitud.</p>
-<p>En GNU/Linux es habitual utilizar el término <strong>daemon</strong> para referirse a determinados procesos que se ejecutan en segundo plano y proporcionan servicios. En Windows existen los servicios del sistema, que desempeñan funciones equivalentes.</p>
+<p>En GNU/Linux es habitual utilizar el término <em>daemon</em> para referirse a determinados procesos que se ejecutan en segundo plano y proporcionan servicios. En Windows existen los servicios del sistema, que desempeñan funciones equivalentes.</p>
 <p>Los servicios de red pueden proporcionar funciones muy diferentes, como resolución de nombres, configuración automática de dispositivos, alojamiento de sitios web, administración remota o compartición de recursos. Los servicios concretos disponibles dependen del sistema operativo y del software que se haya instalado y configurado.</p>
 
 
@@ -2598,7 +2641,11 @@
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
+        <script src="https://cdn.jsdelivr.net/npm/pele@1/dist/pele.global.js"></script>
+      
         <script src="../../js/toc-toggle.js"></script>
+      
+        <script src="../../js/pele-diagrams.js"></script>
       
     
   </body>

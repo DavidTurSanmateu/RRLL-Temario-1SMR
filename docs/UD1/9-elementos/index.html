@@ -120,6 +120,8 @@
     
       <link rel="stylesheet" href="../../css/print-site.css">
     
+      <link rel="stylesheet" href="../../css/pele-style.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2477,7 +2479,7 @@
 <li>
 <h3 id="gateway">Gateway</h3>
 <p>Un <strong>gateway (pasarela)</strong> actúa como punto de conexión entre redes o sistemas que pueden utilizar protocolos o arquitecturas diferentes. Es una función que puede ser desempeñada por dis tintos dispositivos, como un router, y no necesariamente un equipo físico independiente.</p>
-<pre class="mermaid"><code>flowchart LR
+<pre class="pele"><code>flowchart LR
     subgraph RED1["RED 1 · 192.168.1.0/24"]
         direction TB
         PC1["PC 1&lt;br/&gt;192.168.1.10"]
@@ -2505,7 +2507,7 @@
 </div>
 <h2 id="93-nodos-de-la-red">9.3. Nodos de la red</h2>
 <p>Un <strong>nodo</strong> (del latín <i>nodus</i>, «nudo») es un punto de intersección o conexión dentro de una red. En un entorno donde todos los dispositivos son accesibles a través de la red, estos dispositivos son todos considerados nodos incluyendo tanto a los que reciben y reenvían datos, indicados en el esquema siguiente, como a los <strong>dispositivos terminales o finales</strong> (end devices). Éstos últimos son los dispositivos fuente o destino para el envío de datos en una red de ordenadores.</p>
-<pre class="mermaid"><code>%%{init: {
+<pre class="pele"><code>%%{init: {
   "flowchart": {
     "curve": "linear",
     "nodeSpacing": 50,
@@ -2602,7 +2604,11 @@ flowchart LR
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
+        <script src="https://cdn.jsdelivr.net/npm/pele@1/dist/pele.global.js"></script>
+      
         <script src="../../js/toc-toggle.js"></script>
+      
+        <script src="../../js/pele-diagrams.js"></script>
       
     
   </body>

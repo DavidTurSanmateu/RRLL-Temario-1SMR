@@ -120,6 +120,8 @@
     
       <link rel="stylesheet" href="../../css/print-site.css">
     
+      <link rel="stylesheet" href="../../css/pele-style.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2170,21 +2172,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#g-utilidades-ftp-y-tftp" class="md-nav__link">
+  <a href="#g-utilidades-telnet-y-ssh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        G. Utilidades ftp y tftp
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#h-utilidades-telnet-y-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        H. Utilidades telnet y ssh
+        G. Utilidades telnet y ssh
       
     </span>
   </a>
@@ -2682,21 +2673,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#g-utilidades-ftp-y-tftp" class="md-nav__link">
+  <a href="#g-utilidades-telnet-y-ssh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        G. Utilidades ftp y tftp
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#h-utilidades-telnet-y-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        H. Utilidades telnet y ssh
+        G. Utilidades telnet y ssh
       
     </span>
   </a>
@@ -2884,6 +2864,16 @@
 <p>Por ejemplo, una máscara <code>/24</code> equivale a:</p>
 <div class="highlight"><pre><span></span><code>11111111.11111111.11111111.00000000
 </code></pre></div>
+<pre class="pele"><code>---
+config:
+  packet:
+    showBits: true
+    bitOrder: ascending
+    bitsPerRow: 32
+---
+packet
+0-23: "RED"
+24-31: "HOST"</code></pre>
 <p>Su representación decimal es <code>255.255.255.0</code>. Esto significa que los primeros 24 bits identifican la subred y los 8 bits restantes permiten identificar los hosts dentro de ella.</p>
 <p>Si utilizamos una máscara <code>/26</code>, los primeros 26 bits identifican la subred y quedan 6 bits para los hosts:</p>
 <div class="highlight"><pre><span></span><code>11111111.11111111.11111111.11000000
@@ -3060,11 +3050,7 @@ ipconfig /all
 </code></pre></div>
 <p><code>tracert</code> utiliza valores crecientes del campo TTL para identificar los dispositivos intermedios de la ruta y mostrar los tiempos de respuesta correspondientes.</p>
 <p>Estas herramientas son especialmente útiles para localizar en qué punto de una ruta puede estar produciéndose un problema de conectividad o un aumento de la latencia.</p>
-<h3 id="g-utilidades-ftp-y-tftp">G. Utilidades <code>ftp</code> y <code>tftp</code></h3>
-<p><code>ftp</code> permite realizar transferencias de archivos mediante el protocolo FTP. El modelo de funcionamiento incluye un cliente y un servidor FTP.</p>
-<p><code>TFTP (Trivial File Transfer Protocol)</code> es una versión mucho más sencilla de este mecanismo y utiliza UDP. Se ha empleado tradicionalmente en determinados escenarios de red, como algunas operaciones de configuración o arranque de dispositivos.</p>
-<p>Aunque estos protocolos siguen existiendo y pueden encontrarse en determinados entornos, <strong>FTP y especialmente TFTP no deben confundirse con las alternativas modernas y seguras para la transferencia de archivos</strong>. FTP no cifra por defecto las credenciales ni los datos que transmite.</p>
-<h3 id="h-utilidades-telnet-y-ssh">H. Utilidades <code>telnet</code> y <code>ssh</code></h3>
+<h3 id="g-utilidades-telnet-y-ssh">G. Utilidades <code>telnet</code> y <code>ssh</code></h3>
 <p><code>telnet</code> permite establecer una conexión remota mediante una interfaz de terminal. Sin embargo, sus comunicaciones no están cifradas, por lo que no debe utilizarse para administrar sistemas a través de redes no confiables.</p>
 <p>La alternativa habitual para la administración remota segura es <strong>SSH (Secure Shell)</strong>. SSH proporciona una conexión cifrada y permite acceder remotamente a un sistema mediante una terminal, además de ofrecer otros mecanismos de administración y transferencia segura.</p>
 <p>Por este motivo, al estudiar las conexiones remotas es importante conocer <code>telnet</code> como tecnología histórica y de diagnóstico en determinados entornos, pero utilizar <strong>SSH como referencia actual para la administración remota segura</strong>.</p>
@@ -3122,7 +3108,11 @@ ipconfig /all
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
+        <script src="https://cdn.jsdelivr.net/npm/pele@1/dist/pele.global.js"></script>
+      
         <script src="../../js/toc-toggle.js"></script>
+      
+        <script src="../../js/pele-diagrams.js"></script>
       
     
   </body>

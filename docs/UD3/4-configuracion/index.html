@@ -120,6 +120,8 @@
     
       <link rel="stylesheet" href="../../css/print-site.css">
     
+      <link rel="stylesheet" href="../../css/pele-style.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2396,7 +2398,7 @@
 </ul>
 <p>Por ejemplo, una red doméstica puede utilizar direcciones del rango <code>192.168.1.0/24</code>. Los dispositivos se comunican entre sí mediante esas direcciones privadas, mientras que el router proporciona la conexión con la red externa.</p>
 <p>Una dirección IPv4 pública, en cambio, puede utilizarse para identificar una interfaz accesible mediante el encaminamiento de Internet, siempre que la configuración y las medidas de seguridad lo permitan. En una conexión doméstica, la interfaz WAN del router suele utilizar la dirección asignada por el proveedor de acceso, mientras que los dispositivos de la LAN mantienen sus direcciones privadas. El router suele utilizar NAT para permitir que varios equipos compartan la conexión IPv4.</p>
-<pre class="mermaid"><code>flowchart TB
+<pre class="pele"><code>flowchart TB
     subgraph LAN["Dispositivos de la red local (LAN)"]
         PC["PC&lt;br/&gt;192.168.1.10"]
         MOVIL["Móvil&lt;br/&gt;192.168.1.11"]
@@ -2548,7 +2550,11 @@ F. Diagnóstico de incidencias habituales
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
+        <script src="https://cdn.jsdelivr.net/npm/pele@1/dist/pele.global.js"></script>
+      
         <script src="../../js/toc-toggle.js"></script>
+      
+        <script src="../../js/pele-diagrams.js"></script>
       
     
   </body>

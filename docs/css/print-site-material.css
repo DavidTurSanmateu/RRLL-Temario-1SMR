@@ -19,4 +19,9 @@ https://github.com/squidfunk/mkdocs-material */
         word-wrap: break-word;
     }
 
+    body {
+        text-align: justify;
+        font-size: 10pt;
+    }
+
 }

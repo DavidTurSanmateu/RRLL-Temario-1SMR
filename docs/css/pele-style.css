@@ -1,0 +1,43 @@
+.pele {
+  --pele-bg: var(--md-code-bg-color);
+  --pele-fg: var(--md-default-fg-color);
+  --pele-muted: var(--md-default-fg-color--light);
+  --pele-line: var(--md-default-fg-color--light);
+  --pele-surface: var(--md-code-bg-color);
+  --pele-surface-alt: var(--md-default-bg-color);
+  --pele-border: var(--md-default-fg-color--lightest);
+  --pele-accent: var(--md-primary-fg-color);
+  --pele-critical: #d14343;
+
+  width: 100%;
+  max-width: 100%;
+
+  overflow-x: auto;
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 5%);
+}
+
+.pele svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  background: transparent;
+  border: 0;
+}
+
+/* Ocultar botones y controles de zoom de Pele */
+.pele button,
+.pele [class*="zoom"],
+.pele [class*="Zoom"] {
+  display: none !important;
+}
+
+/* Móviles */
+@media (max-width: 600px) {/*
+  .pele {
+    padding: 0.5rem;
+    border-radius: 8px;
+  }*/
+}
