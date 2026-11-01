@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../3-tcp-ip/">
-      
-      
-        <link rel="next" href="../anexo1/">
       
       
         
@@ -1742,20 +1738,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -1776,7 +1770,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1791,20 +1785,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
@@ -1825,7 +1817,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1915,133 +1907,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    4. Configuración de los equipos de red
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    4. Configuración de los equipos de red
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="En esta página">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      En esta página
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#41-configuracion-del-direccionamiento-ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1. Configuración del direccionamiento IP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4.1. Configuración del direccionamiento IP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#411-configuracion-estatica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1.1. Configuración estática
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#412-configuracion-dinamica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1.2. Configuración dinámica
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#413-direcciones-privadas-y-publicas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1.3. Direcciones privadas y públicas
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2356,7 +2221,11 @@
 
 <h2 id="41-configuracion-del-direccionamiento-ip">4.1. Configuración del direccionamiento IP</h2>
 <p>Para que un equipo pueda comunicarse correctamente a través de una red IPv4, es necesario configurar su dirección IP, la máscara de subred y, cuando deba comunicarse con dispositivos de otras redes, la puerta de enlace predeterminada. Estos parámetros deben ser coherentes con el direccionamiento de la red a la que está conectado el equipo.</p>
-<p>Antes de configurar los dispositivos, es conveniente planificar el direccionamiento de la red. Para ello, se determina qué subred se utilizará y qué direcciones se asignarán a los distintos equipos. Por ejemplo, en una pequeña red local se puede utilizar la subred <code>192.168.1.0/24</code>, con el router en la dirección <code>192.168.1.1</code> y los equipos en direcciones como <code>192.168.1.10</code>, <code>192.168.1.11</code> o <code>192.168.1.12</code>. La máscara correspondiente es <code>255.255.255.0</code>.</p>
+<p>Antes de configurar los dispositivos, es conveniente planificar el direccionamiento de la red. Para ello, se determina qué subred se utilizará y qué direcciones se asignarán a los distintos equipos.</p>
+<div class="admonition example">
+<p class="admonition-title">Por ejemplo</p>
+<p>Por ejemplo, en una pequeña red local se puede utilizar la subred <code>192.168.1.0/24</code>, con el router en la dirección <code>192.168.1.1</code> y los equipos en direcciones como <code>192.168.1.10</code>, <code>192.168.1.11</code> o <code>192.168.1.12</code>. La máscara correspondiente es <code>255.255.255.0</code>.</p>
+</div>
 <p>La planificación debe garantizar que cada interfaz tenga una dirección adecuada para su subred y que no existan direcciones IP duplicadas entre los dispositivos. También es importante reservar determinadas direcciones para los equipos cuya ubicación en la red conviene mantener estable, como el router, las impresoras de red o los servidores. En una red pequeña, estas direcciones pueden asignarse manualmente, siempre que se lleve un control de las direcciones utilizadas.</p>
 <h3 id="411-configuracion-estatica">4.1.1. Configuración estática</h3>
 <p>La configuración estática consiste en introducir manualmente los parámetros de red de cada equipo. En IPv4, normalmente se especifican la dirección IP y la máscara de subred y, si el equipo necesita comunicarse con otras redes, la puerta de enlace predeterminada.</p>
