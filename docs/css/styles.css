@@ -4,6 +4,14 @@
  * @description Theme for the IES Conselleria presentation template
 */
 
+/* Clase para elementos no seleccionables */
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 
 .md-typeset table thead th {
   background-color: #00859155;
@@ -78,7 +86,7 @@ pre.terminal {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  align-items: center;
+  align-items: start;
 }
 
 @media screen and (max-width: 768px) {
@@ -399,5 +407,5 @@ font-size: 0.7em;
 table+p {margin-top: 0.5em;} 
 
 :root {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
