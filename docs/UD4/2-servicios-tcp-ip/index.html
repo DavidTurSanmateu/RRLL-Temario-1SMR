@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../1-recursos-compartidos/">
+      
+      
+        <link rel="next" href="../act-ftp/">
       
       
         
@@ -2264,18 +2268,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -2296,7 +2302,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2311,18 +2317,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
         
           
           <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
@@ -2343,7 +2351,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2377,6 +2385,94 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Servicios de infraestructura TCP/IP
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Servicios de infraestructura TCP/IP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="En esta página">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      En esta página
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-servidores-dns-domain-name-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Servidores DNS (Domain Name System)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2452,6 +2548,34 @@
     
   
     A. Servicio FTP en Cisco Packet Tracer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../act-dns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Servicio DNS en Cisco Packet Tracer
   
 
     
@@ -2542,27 +2666,99 @@
 <h2 id="21-servidores-dns-domain-name-system">2.1. Servidores DNS (Domain Name System)</h2>
 <p>El sistema de nombres de dominio o DNS (Domain Name System) es un servicio de resolución de nombres que permite identificar los dispositivos y servicios de una red mediante nombres, en lugar de tener que utilizar directamente sus direcciones IP. Su función principal consiste en traducir los nombres de dominio en direcciones IP, aunque también permite realizar otras consultas, como obtener los servidores de correo asociados a un dominio o localizar determinados servicios de red.</p>
 <p>DNS utiliza una estructura jerárquica y distribuida que organiza los nombres en diferentes niveles. Un nombre de dominio completo, denominado <em>FQDN (Fully Qualified Domain Name)</em>, está formado por varias etiquetas separadas por puntos. Estas etiquetas se escriben de izquierda a derecha, desde el nivel más específico hasta el más general. Por ejemplo, en el nombre <code>pc.aula.centro.es</code>, <code>pc</code> identifica un equipo concreto, <code>aula</code> representa un subdominio, <code>centro</code> identifica el dominio de la organización y <code>es</code> corresponde al dominio de nivel superior.</p>
-<!-- per ací anem 
-
-Esta organización permite distribuir la administración de los nombres entre diferentes servidores DNS, evitando que toda la información tenga que almacenarse en un único sistema centralizado. Los servidores DNS pueden ser autoritativos, cuando contienen información oficial sobre una zona del espacio de nombres, o recursivos, cuando se encargan de buscar las respuestas necesarias para los equipos que realizan consultas.
-
-En una red, los dispositivos suelen tener configuradas las direcciones IP de uno o varios servidores DNS a los que envían sus consultas. Es habitual disponer de un servidor preferido y otro alternativo para mejorar la continuidad del servicio, aunque pueden configurarse más servidores. El sistema operativo utiliza estos servidores para resolver los nombres que necesitan las aplicaciones y los servicios de red.
-
-La información de DNS se organiza mediante registros de diferentes tipos. Entre los más habituales se encuentran:
-
-- **A:** asocia un nombre de dominio con una dirección IPv4.
-- **AAAA:** asocia un nombre de dominio con una dirección IPv6.
-- **CNAME:** establece un alias que apunta a otro nombre de dominio.
-- **MX:** identifica los servidores encargados de recibir el correo electrónico de un dominio.
-- **NS:** identifica los servidores DNS autoritativos de una zona.
-- **PTR:** permite realizar la resolución inversa, obteniendo un nombre a partir de una dirección IP.
-- **SRV:** permite localizar servidores que ofrecen determinados servicios, indicando información como el puerto y el nombre del servidor.
-
-Una característica importante de DNS es que permite modificar la dirección IP asociada a un nombre sin necesidad de cambiar la forma en que los usuarios acceden al equipo o servicio. Por ejemplo, si un servidor cambia de dirección IP, basta con actualizar el registro correspondiente para que los clientes puedan seguir utilizando el mismo nombre.
-
-También existe el DNS dinámico (DDNS, Dynamic DNS), que permite actualizar automáticamente los registros DNS cuando cambia la dirección IP de un dispositivo. Esta funcionalidad resulta especialmente útil en redes donde los equipos reciben direcciones dinámicas mediante DHCP. La actualización puede realizarla el propio servidor DHCP o un cliente autorizado, dependiendo de la configuración de la infraestructura.
-
-En los sistemas Windows Server, el servicio DNS se puede instalar como un rol del servidor. En Linux existen diferentes implementaciones, entre las que destaca BIND 9, ampliamente utilizada para proporcionar servicios DNS autoritativos y de resolución recursiva. También existen alternativas como Unbound y dnsmasq, habituales en determinados entornos de red.
+<p>Esta organización permite distribuir la administración de los nombres entre diferentes servidores DNS, evitando que toda la información tenga que almacenarse en un único sistema centralizado. Los servidores DNS pueden ser autoritativos, cuando contienen información oficial sobre los registros DNS de los dominios que administran, o recursivos, cuando reciben una consulta y se encargan de buscar la respuesta preguntando a otros servidores DNS si es necesario, hasta encontrar la información solicitada.</p>
+<div class="admonition example">
+<p class="admonition-title">Por ejemplo</p>
+<p>Un ordenador quiere acceder a la página <code>www.google.com</code> y necesita conocer su dirección IP para establecer la conexión.</p>
+<ul>
+<li>
+<p><strong>Servidor DNS recursivo</strong>: recibe la consulta del ordenador y se encarga de buscar la dirección IP de <code>www.google.com</code>. Para ello, consulta a otros servidores DNS hasta encontrar la respuesta y se la devuelve al ordenador.</p>
+</li>
+<li>
+<p><strong>Servidor DNS autoritativo</strong>: contiene los registros DNS oficiales del dominio que administra. En este caso, un servidor autoritativo de Google conoce la información de <code>www.google.com</code> y proporciona su dirección IP cuando recibe la consulta correspondiente.</p>
+</li>
+</ul>
+<p>El flujo de comunicación al acceder a una página web sería el siguiente:</p>
+<ol>
+<li>Solicitud DNS: el ordenador solicita la dirección IP del dominio al servidor DNS recursivo.</li>
+<li>Resolución DNS: el servidor recursivo busca la dirección IP consultando a otros servidores DNS si es necesario.</li>
+<li>Respuesta DNS: el servidor recursivo devuelve la dirección IP al ordenador.</li>
+<li>Conexión con el servidor web: el ordenador utiliza esa dirección IP para establecer una conexión con el servidor donde está alojada la página web.</li>
+<li>Solicitud HTTP/HTTPS: el navegador solicita al servidor el contenido de la página web.</li>
+<li>Respuesta del servidor: el servidor envía los archivos necesarios (HTML, CSS, imágenes, etc.) y el navegador los interpreta para mostrar la página web.</li>
+</ol>
+</div>
+<p>En una red, los dispositivos suelen tener configuradas las direcciones IP de uno o varios servidores DNS a los que envían sus consultas. Es habitual disponer de un servidor preferido y otro alternativo para mejorar la continuidad del servicio, aunque pueden configurarse más servidores. El sistema operativo utiliza estos servidores para resolver los nombres que necesitan las aplicaciones y los servicios de red.</p>
+<p><img alt="Configurar servidor DNS en Windows" src="../img/dns.png" /></p>
+<p>La información de DNS se organiza mediante registros de diferentes tipos. Entre los más habituales se encuentran:</p>
+<ul>
+<li><strong>A:</strong> asocia un nombre de dominio con una dirección IPv4.</li>
+<li><strong>AAAA:</strong> asocia un nombre de dominio con una dirección IPv6.</li>
+<li><strong>CNAME:</strong> establece un alias que apunta a otro nombre de dominio.</li>
+<li><strong>MX:</strong> identifica los servidores encargados de recibir el correo electrónico de un dominio.</li>
+<li><strong>NS:</strong> identifica los servidores DNS autoritativos de una zona.</li>
+<li><strong>PTR:</strong> permite realizar la resolución inversa, obteniendo un nombre a partir de una dirección IP.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo de registro A de DNS</p>
+<p>Este es un ejemplo de registro A:</p>
+<table>
+<thead>
+<tr>
+<th>Dominio</th>
+<th>Nombre</th>
+<th>Tipo</th>
+<th>Valor</th>
+<th>TTL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>example.com</code></td>
+<td><code>@</code></td>
+<td>A</td>
+<td>192.0.2.1</td>
+<td>14400</td>
+</tr>
+</tbody>
+</table>
+<p>El símbolo <code>@</code> en este ejemplo indica que se trata de un registro para el dominio raíz. Además de <code>@</code>, podemos encontrar nombres como estos:</p>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Dominio resultante</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@</code></td>
+<td><code>example.com</code></td>
+<td>Se refiere al dominio principal.</td>
+</tr>
+<tr>
+<td><code>www</code></td>
+<td><code>www.example.com</code></td>
+<td>Se refiere al subdominio <code>www</code>.</td>
+</tr>
+<tr>
+<td><code>mail</code></td>
+<td><code>mail.example.com</code></td>
+<td>Se refiere al subdominio <code>mail</code>.</td>
+</tr>
+<tr>
+<td><code>ftp</code></td>
+<td><code>ftp.example.com</code></td>
+<td>Se refiere al subdominio <code>ftp</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>El valor "14400" es el TTL (tiempo de vida), indicado en segundos. El TTL por defecto para los registros A es de 14400 segundos. Esto quiere decir que si un registro A se actualiza, tarda 4 horas(14400 segundos) en surtir efecto.</p>
+</div>
+<p>Una característica importante de DNS es que permite modificar la dirección IP asociada a un nombre sin necesidad de cambiar la forma en que los usuarios acceden al equipo o servicio. Por ejemplo, si un servidor cambia de dirección IP, basta con actualizar el registro correspondiente para que los clientes puedan seguir utilizando el mismo nombre.</p>
+<p>También existe el DNS dinámico (<em>DDNS, Dynamic DNS</em>), que permite actualizar automáticamente los registros DNS cuando cambia la dirección IP de un dispositivo. Esta funcionalidad resulta especialmente útil en redes donde los equipos reciben direcciones dinámicas mediante DHCP.</p>
+<!-- NO
 
 ## 2.2. Otros sistemas de resolución de nombres
 
@@ -2581,6 +2777,10 @@ Entre estos mecanismos destaca mDNS (Multicast DNS), que permite resolver nombre
 También existe DNS-SD (DNS Service Discovery), que permite descubrir los servicios disponibles en una red, como impresoras, servidores multimedia o dispositivos de otros tipos. Puede utilizarse junto con mDNS para localizar servicios sin necesidad de configurar manualmente su dirección o sus características.
 
 Por tanto, la elección del sistema de resolución depende del entorno y de las necesidades de la red. DNS constituye la solución general para la resolución jerárquica de nombres, mientras que mDNS y DNS-SD facilitan el descubrimiento de equipos y servicios en redes locales. WINS queda reservado principalmente para la compatibilidad con infraestructuras antiguas que todavía utilizan NetBIOS.
+
+-->
+
+<!--
 
 ## 2.3. Servidores DHCP (Dynamic Host Configuration Protocol)
 
