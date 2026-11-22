@@ -2469,6 +2469,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#22-servidores-dhcp-dynamic-host-configuration-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Servidores DHCP (Dynamic Host Configuration Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2589,6 +2600,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../act-dhcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Servicio DHCP en Cisco Packet Tracer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2643,6 +2682,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#22-servidores-dhcp-dynamic-host-configuration-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Servidores DHCP (Dynamic Host Configuration Protocol)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2689,7 +2739,7 @@
 </ol>
 </div>
 <p>En una red, los dispositivos suelen tener configuradas las direcciones IP de uno o varios servidores DNS a los que envían sus consultas. Es habitual disponer de un servidor preferido y otro alternativo para mejorar la continuidad del servicio, aunque pueden configurarse más servidores. El sistema operativo utiliza estos servidores para resolver los nombres que necesitan las aplicaciones y los servicios de red.</p>
-<p><img alt="Configurar servidor DNS en Windows" src="../img/dns.png" /></p>
+<p><img alt="Configurar servidor DNS en Windows" src="../img/dns-windows.png" /></p>
 <p>La información de DNS se organiza mediante registros de diferentes tipos. Entre los más habituales se encuentran:</p>
 <ul>
 <li><strong>A:</strong> asocia un nombre de dominio con una dirección IPv4.</li>
@@ -2756,66 +2806,54 @@
 </table>
 <p>El valor "14400" es el TTL (tiempo de vida), indicado en segundos. El TTL por defecto para los registros A es de 14400 segundos. Esto quiere decir que si un registro A se actualiza, tarda 4 horas(14400 segundos) en surtir efecto.</p>
 </div>
+<p><img alt="Esquema de funcionamiento DNS" src="../img/dns-esquema.png" /></p>
 <p>Una característica importante de DNS es que permite modificar la dirección IP asociada a un nombre sin necesidad de cambiar la forma en que los usuarios acceden al equipo o servicio. Por ejemplo, si un servidor cambia de dirección IP, basta con actualizar el registro correspondiente para que los clientes puedan seguir utilizando el mismo nombre.</p>
 <p>También existe el DNS dinámico (<em>DDNS, Dynamic DNS</em>), que permite actualizar automáticamente los registros DNS cuando cambia la dirección IP de un dispositivo. Esta funcionalidad resulta especialmente útil en redes donde los equipos reciben direcciones dinámicas mediante DHCP.</p>
-<!-- NO
-
-## 2.2. Otros sistemas de resolución de nombres
-
-Aunque DNS es el sistema de resolución de nombres más utilizado en las redes TCP/IP, existen otros mecanismos que permiten identificar equipos y servicios. Algunos utilizan nombres planos, sin una estructura jerárquica, mientras que otros están diseñados para resolver nombres dentro de redes locales.
-
-Uno de los sistemas tradicionales es NetBIOS, una interfaz de programación utilizada históricamente para proporcionar servicios de comunicación y denominación en redes Windows. Los nombres NetBIOS tienen una longitud máxima de 15 caracteres visibles y no siguen la estructura jerárquica de DNS.
-
-Para facilitar la resolución de estos nombres en redes TCP/IP, Microsoft desarrolló WINS (Windows Internet Name Service), un servicio que mantiene una base de datos de asociaciones entre nombres NetBIOS y direcciones IP. De esta forma, los equipos pueden localizarse mediante consultas dirigidas al servidor WINS, evitando depender exclusivamente de los mecanismos de difusión o broadcast de la red local.
-
-El registro de los nombres NetBIOS en WINS podía realizarse automáticamente cuando un equipo se incorporaba a la red. Además, WINS permitía mantener una correspondencia entre los nombres NetBIOS y los registros DNS en determinados entornos Windows.
-
-Sin embargo, WINS es una tecnología heredada que ha perdido protagonismo y no debe considerarse una solución habitual para el diseño de redes actuales. Las redes modernas utilizan principalmente DNS y otros mecanismos de resolución adaptados a sus necesidades.
-
-Entre estos mecanismos destaca mDNS (Multicast DNS), que permite resolver nombres dentro de una red local sin necesidad de disponer de un servidor DNS centralizado. Para ello, utiliza mensajes multicast dirigidos a los dispositivos de la red. Es habitual en entornos domésticos y pequeñas redes, especialmente en dispositivos que utilizan tecnologías como Bonjour o servicios de descubrimiento de red.
-
-También existe DNS-SD (DNS Service Discovery), que permite descubrir los servicios disponibles en una red, como impresoras, servidores multimedia o dispositivos de otros tipos. Puede utilizarse junto con mDNS para localizar servicios sin necesidad de configurar manualmente su dirección o sus características.
-
-Por tanto, la elección del sistema de resolución depende del entorno y de las necesidades de la red. DNS constituye la solución general para la resolución jerárquica de nombres, mientras que mDNS y DNS-SD facilitan el descubrimiento de equipos y servicios en redes locales. WINS queda reservado principalmente para la compatibilidad con infraestructuras antiguas que todavía utilizan NetBIOS.
-
--->
-
-<!--
-
-## 2.3. Servidores DHCP (Dynamic Host Configuration Protocol)
-
-La configuración manual de los parámetros TCP/IP de todos los dispositivos de una red puede resultar laboriosa y propiciar errores, especialmente cuando existe un número elevado de equipos o estos cambian frecuentemente de ubicación.
-
-El protocolo DHCP (Dynamic Host Configuration Protocol) permite automatizar esta tarea mediante un servicio que proporciona a los dispositivos los parámetros necesarios para establecer su configuración de red. De esta forma, los equipos pueden incorporarse a una red sin que sea necesario introducir manualmente todos esos datos.
-
-El servidor DHCP dispone de un conjunto de direcciones IP disponibles, denominado ámbito o pool de direcciones, que utiliza para atender las solicitudes de los clientes. Cuando un dispositivo solicita su configuración, el servidor puede asignarle una dirección IP durante un periodo determinado, denominado tiempo de concesión o lease.
-
-El funcionamiento habitual de DHCP para IPv4 se basa en un proceso de cuatro fases, conocido como DORA:
-
-1. **Discover:** el cliente envía un mensaje de difusión para localizar servidores DHCP disponibles en la red.
-2. **Offer:** uno o varios servidores DHCP responden ofreciendo una dirección IP y los parámetros de configuración correspondientes.
-3. **Request:** el cliente solicita formalmente la dirección ofrecida por uno de los servidores.
-4. **Acknowledgment:** el servidor confirma la asignación y comunica al cliente que puede utilizar la configuración recibida.
-
-La dirección IP asignada no tiene por qué mantenerse indefinidamente. Mientras la concesión está vigente, el cliente puede solicitar su renovación para seguir utilizando la misma dirección. Si la concesión expira y no se renueva, la dirección puede volver a estar disponible para otros dispositivos.
-
-Además de las direcciones IP, DHCP permite proporcionar otros parámetros de configuración mediante opciones. Entre los más importantes se encuentran:
-
-- **Máscara de subred o prefijo de red:** determina qué parte de la dirección IP identifica la red y cuál identifica al dispositivo.
-- **Puerta de enlace predeterminada:** indica el dispositivo al que deben enviarse los paquetes destinados a otras redes.
-- **Servidores DNS:** especifica las direcciones IP de los servidores encargados de resolver nombres.
-- **Nombre de dominio:** permite indicar el dominio de búsqueda asociado a la configuración del cliente.
-- **Servidores de tiempo:** proporciona información sobre servidores que pueden utilizarse para sincronizar la hora.
-
-Una característica especialmente útil de DHCP es la posibilidad de establecer reservas. Una reserva asocia la dirección MAC de un dispositivo con una dirección IP concreta, de manera que, cuando ese equipo solicita su configuración, el servidor le asigna habitualmente la misma dirección. Esta opción permite mantener direcciones predecibles para determinados dispositivos sin tener que configurar manualmente sus parámetros de red.
-
-La infraestructura DHCP también permite utilizar varios servidores para proporcionar continuidad del servicio y distribuir la carga de trabajo. No existe una limitación general que obligue a disponer de un único servidor DHCP por segmento de red. Sin embargo, cuando varios servidores atienden una misma subred, deben configurarse de forma coordinada para evitar asignaciones incompatibles o duplicadas. En redes que utilizan varias subredes, los agentes de retransmisión DHCP (DHCP Relay) permiten trasladar las solicitudes de los clientes hasta servidores situados en otras redes, ya que las solicitudes iniciales de DHCPv4 utilizan mensajes de difusión que no atraviesan los encaminadores.
-
-DHCP también dispone de una versión para IPv6, denominada DHCPv6, adaptada a las características de este protocolo. IPv6 incorpora además mecanismos propios de configuración automática, como SLAAC (Stateless Address Autoconfiguration), que permiten obtener direcciones IPv6 sin depender necesariamente de un servidor DHCPv6.
-
-En los sistemas Windows Server, DHCP puede instalarse como un rol del servidor y administrarse mediante herramientas gráficas o comandos. En Linux existen diferentes implementaciones, como Kea DHCP y dnsmasq, que permiten proporcionar este servicio y adaptarlo a las características de cada infraestructura de red.
-
--->
+<h2 id="22-servidores-dhcp-dynamic-host-configuration-protocol">2.2. Servidores DHCP (Dynamic Host Configuration Protocol)</h2>
+<p>La configuración manual de los parámetros TCP/IP de todos los dispositivos de una red puede resultar laboriosa y propiciar errores, especialmente cuando existe un número elevado de equipos o estos cambian frecuentemente de ubicación.</p>
+<p>El protocolo <strong>DHCP (<em>Dynamic Host Configuration Protocol</em>)</strong> permite automatizar esta tarea mediante un servicio que proporciona a los dispositivos los parámetros necesarios para establecer su configuración de red. De esta forma, los equipos pueden incorporarse a una red sin que sea necesario introducir manualmente todos esos datos.</p>
+<p>El servidor DHCP dispone de un <strong>conjunto de direcciones IP disponibles, denominado ámbito o <em>pool</em> de direcciones</strong>, que utiliza para atender las solicitudes de los clientes. Cuando un dispositivo solicita su configuración, el servidor puede asignarle una dirección IP durante un periodo determinado, denominado tiempo de concesión o <i>lease</i>.</p>
+<p>El funcionamiento habitual de DHCP para IPv4 se basa en un proceso de cuatro fases, conocido como DORA:</p>
+<ol>
+<li><strong>Discover (descubrimiento):</strong> el cliente envía un mensaje de difusión (<i>broadcast</i>) para localizar servidores DHCP disponibles en la red.</li>
+<li><strong>Offer (oferta):</strong>  uno o varios servidores DHCP responden ofreciendo una dirección IP y los parámetros de configuración correspondientes, como la máscara de subred, la puerta de enlace y los servidores DNS.</li>
+<li><strong>Request (solicitud):</strong> el cliente envía un mensaje solicitando formalmente la dirección IP ofrecida por uno de los servidores DHCP.</li>
+<li><strong>Acknowledgment (confirmación):</strong> el servidor DHCP confirma la asignación de la dirección IP y comunica al cliente que puede utilizar la configuración proporcionada.</li>
+</ol>
+<p><img alt="DHCP proceso DORA" src="../img/dhcp-dora.png" /></p>
+<p>La dirección IP asignada no tiene por qué mantenerse indefinidamente. Mientras la concesión está vigente, el cliente puede solicitar su renovación para seguir utilizando la misma dirección. Si la concesión expira y no se renueva, la dirección puede volver a estar disponible para otros dispositivos.</p>
+<p>Un servicio DHCP permite proporcionar varios parámetros de configuración. Entre los más importantes se encuentran:</p>
+<ul>
+<li><strong>Dirección IP</strong>: identifica de forma lógica al dispositivo dentro de la red.</li>
+<li><strong>Máscara de subred (o prefijo de red)</strong>: determina qué parte de la dirección IP identifica la red y qué parte identifica al dispositivo.</li>
+<li><strong>Puerta de enlace predeterminada</strong>: indica la dirección IP del dispositivo al que deben enviarse los paquetes destinados a otras redes, normalmente un router.</li>
+<li><strong>Servidores DNS</strong>: proporciona las direcciones IP de los servidores encargados de resolver nombres de dominio y traducirlos a direcciones IP.</li>
+<li><strong>Nombre de dominio</strong>: establece el dominio de búsqueda que puede utilizar el cliente para completar nombres de host no cualificados.</li>
+<li><strong>Servidores de tiempo (NTP)</strong>: proporciona las direcciones de servidores que permiten sincronizar la hora del dispositivo.</li>
+</ul>
+<p>Una característica especialmente útil de DHCP es la posibilidad de <strong>establecer reservas de direcciones IP</strong>. Una reserva consiste en asociar la dirección MAC de un dispositivo con una dirección IP concreta, de manera que, cada vez que ese equipo solicita su configuración de red, el servidor DHCP le asigna habitualmente la misma dirección IP.</p>
+<p>Esta funcionalidad permite mantener direcciones IP predecibles para determinados dispositivos sin necesidad de configurar manualmente sus parámetros de red. De este modo, se aprovechan las ventajas de la configuración automática de DHCP, pero se consigue que ciertos equipos mantengan una dirección IP estable. Estas reservas DHCP resultan especialmente útiles en situaciones diversas:</p>
+<ul>
+<li>Impresoras de red: permiten que las impresoras tengan siempre la misma dirección IP, facilitando su instalación y configuración en los ordenadores. Así, los equipos pueden comunicarse con ellas utilizando siempre la misma dirección.</li>
+<li>Servidores: permiten asignar una dirección IP predecible a servidores de archivos, almacenamiento en red u otros dispositivos que ofrecen servicios al resto de equipos. Esto facilita el acceso a sus recursos y evita tener que actualizar las direcciones cuando cambia una concesión.</li>
+<li>Cámaras IP y sistemas de videovigilancia: permiten mantener identificadas las cámaras mediante direcciones IP conocidas, simplificando su configuración en los sistemas de grabación y monitorización.</li>
+<li>Puntos de acceso y otros dispositivos de infraestructura: facilitan la administración de determinados elementos de la red, ya que el administrador puede conocer de antemano la dirección IP que tendrá cada dispositivo.</li>
+<li>Equipos que requieren reglas específicas en el router o cortafuegos: permiten asociar determinadas reglas de acceso o filtrado a una dirección IP estable, evitando que estas dejen de funcionar si cambia la dirección asignada al dispositivo.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Por ejemplo</p>
+<p>Imaginemos una pequeña oficina con una impresora de red cuya dirección IP es <code>192.168.1.50</code>. Si el servidor DHCP tiene configurada una reserva para la dirección MAC de esa impresora, siempre que esta solicite una configuración de red recibirá habitualmente la dirección <code>192.168.1.50</code>. Así, todos los ordenadores podrán utilizar esa dirección para acceder a la impresora sin preocuparse por posibles cambios en su dirección IP.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Atención</p>
+<p>Es importante <strong>distinguir entre una reserva DHCP y una asignación estática</strong> o manual.</p>
+<ul>
+<li>En una reserva, la dirección IP se configura en el servidor DHCP y el dispositivo sigue obteniendo automáticamente sus parámetros de red.</li>
+<li>En una asignación estática, la dirección IP se configura directamente en el propio dispositivo, sin depender del servidor DHCP para obtenerla.</li>
+</ul>
+</div>
+<p>La infraestructura DHCP también permite utilizar <strong>varios servidores para proporcionar continuidad del servicio y distribuir la carga de trabajo</strong>. No existe una limitación general que obligue a disponer de un único servidor DHCP por segmento de red. Sin embargo, cuando varios servidores atienden una misma subred, <strong>deben configurarse de forma coordinada para evitar asignaciones duplicadas</strong> o incompatibles.</p>
+<p>En los sistemas Windows Server, DHCP puede instalarse como un rol del servidor y administrarse mediante herramientas gráficas o comandos. En Linux existen diferentes implementaciones, como Kea DHCP y dnsmasq, que permiten proporcionar este servicio y adaptarlo a las características de cada infraestructura de red.</p>
 
 
 
