@@ -12,6 +12,8 @@
         <link rel="prev" href="../act-dns/">
       
       
+        <link rel="next" href="../act-servicios/">
+      
       
         
       
@@ -145,7 +147,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#actividad-servicio-dhcp-en-cisco-packet-tracer" class="md-skip">
+        <a href="#actividad-c-servicio-dhcp-en-cisco-packet-tracer" class="md-skip">
           Skip to content
         </a>
       
@@ -2617,10 +2619,49 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#actividad-3-servicio-dhcp-con-multiples-redes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actividad 3. Servicio DHCP con múltiples redes
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../act-servicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Servicios varios con Cisco Packet Tracer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2691,6 +2732,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#actividad-3-servicio-dhcp-con-multiples-redes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actividad 3. Servicio DHCP con múltiples redes
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2708,7 +2760,7 @@
 
 
 
-<h1 id="actividad-servicio-dhcp-en-cisco-packet-tracer">Actividad. Servicio DHCP en Cisco Packet Tracer</h1>
+<h1 id="actividad-c-servicio-dhcp-en-cisco-packet-tracer">Actividad C. Servicio DHCP en Cisco Packet Tracer</h1>
 <p>En esta actividad aprenderás a configurar y utilizar un servicio DHCP (<em>Dynamic Host Configuration Protocol</em>) mediante Cisco Packet Tracer.</p>
 <p>Trabajarás con un servidor DHCP y varios equipos clientes para practicar la asignación automática de direcciones IP y otros parámetros de configuración de red. También configurarás una reserva DHCP y comprobarás cómo permite asignar siempre la misma dirección IP a un dispositivo determinado.</p>
 <p><strong>Realiza capturas de pantalla del proceso</strong>.</p>
@@ -2839,6 +2891,63 @@
 </li>
 <li>
 <p>Comprueba que el resto de los ordenadores siguen recibiendo direcciones IP dinámicas del rango establecido.</p>
+</li>
+</ol>
+<h2 id="actividad-3-servicio-dhcp-con-multiples-redes">Actividad 3. Servicio DHCP con múltiples redes</h2>
+<ol>
+<li>
+<p>Diseña una topología de red con los siguientes dispositivos:</p>
+<ul>
+<li>1 router Cisco 2911.</li>
+<li>3 switches Cisco 2960.</li>
+<li>2 ordenadores.</li>
+<li>1 servidor.</li>
+</ul>
+<p>Conecta los dispositivos siguiendo esta distribución:</p>
+<ul>
+<li>El primer switch se conectará al router y a PC1.</li>
+<li>El segundo switch se conectará al router y a PC2.</li>
+<li>El tercer switch se conectará al router y al servidor DHCP.</li>
+</ul>
+</li>
+<li>
+<p>Divide de la red y configura las interfaces del router.</p>
+<p>La red inicial disponible es <code>192.168.10.0/24</code>. Deberás dividirla de forma que puedas asignar direcciones de subredes diferentes a los tres segmentos de la topología.</p>
+<p>Realiza el cálculo de subnetting manualmente o utiliza una calculadora de subredes para obtener las direcciones de red, máscaras y rangos de direcciones IP utilizables.</p>
+<p>Una vez calculadas las subredes, configura las tres interfaces del router.</p>
+</li>
+<li>
+<p>Configura el servidor DHCP con una dirección IP estática, utilizando la subred correspondiente a la Red 0 obtenida en el ejercicio de subnetting.</p>
+</li>
+<li>
+<p>Activa el servicio DHCP del servidor desde <code>Services → DHCP</code> y crea los siguientes pools:</p>
+<ul>
+<li>serverPool: direcciones de la subred 1 calculada. Modifica el pool que viene por defecto.</li>
+<li>serverPool2: direcciones de la subred 2 calculada. Deberás añadirlo con <code>Add</code>.</li>
+</ul>
+</li>
+<li>
+<p>Configura PC1 y PC2 para obtener su dirección IP automáticamente mediante DHCP. Comprueba que <strong>no reciben ninguna dirección válida</strong>.</p>
+<div class="admonition nota">
+<p class="admonition-title">Nota</p>
+<p>¿Por qué ocurre esto? El servidor DHCP se encuentra en una subred diferente a la de los ordenadores. Por defecto, los routers no reenvían los mensajes broadcast DHCP entre distintas redes. Es necesario configurar las interfaces de red del router para que lo permitan.</p>
+</div>
+</li>
+<li>
+<p>Para solucionar el problema, configura el router como intermediario DHCP (DHCP Relay) mediante el comando <code>ip helper-address</code>.</p>
+<p>Para ello:</p>
+<ol>
+<li>Desde la pestaña de configuración del router, pulsa sobre una de las interfaces de red. Por ejemplo, <code>GigabitEthernet0/0/0</code>.</li>
+<li>Ahora ve a la pestaña <code>CLI</code> y ejecuta <code>ip helper-address 192.168.10.2</code>. La IP será la del servidor, así que puede cambiar (de hecho, lo hará) en otros ejercicios.</li>
+<li>Repite el proceso en todas las interfaces de red del router que conecten algún segmento de la topología. En este caso, <code>GigabitEthernet0/0/1</code> y <code>GigabitEthernet0/0/2</code>.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><code>ip helper-address 192.168.10.2</code>: indica que las peticiones DHCP recibidas por esta interfaz deben reenviarse al servidor DHCP.</p>
+</div>
+</li>
+<li>
+<p>Vuelve a revisar las IP de PC1 y PC2 obtenidas por DHCP. Comprueba que ahora sí reciben IP de segmentos diferentes.</p>
 </li>
 </ol>
 
